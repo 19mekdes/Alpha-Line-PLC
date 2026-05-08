@@ -1,24 +1,25 @@
 import  { useState } from 'react';
+
 import { motion } from 'framer-motion';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Send, 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
   CheckCircle,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Youtube,
+  Facebook,   // ✅ Use this
+  Twitter,    // ✅ Use this
+  Linkedin,   // ✅ Use this
+  Instagram,  // ✅ Use this
+  Youtube,    // ✅ Use this (capital 'Y')
   Navigation,
   Calendar,
   Users,
   Award,
   MessageCircle,
   AlertCircle
-} from 'lucide-react';
+} from "lucide-react";
 import SectionLabel from '../components/SectionLabel';
 import { companyInfo } from '../data/siteData';
 

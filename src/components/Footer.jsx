@@ -1,16 +1,17 @@
 import 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
-  Instagram,
+
+import {
+  Facebook,   // ✅ Use this
+  Twitter,    // ✅ Use this
+  Linkedin,   // ✅ Use this (note: lowercase 'i')
+  Instagram,  // ✅ Use this
   MapPin,
   Phone,
   Mail,
   Clock,
   Factory
-} from 'lucide-react';
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
