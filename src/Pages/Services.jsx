@@ -166,7 +166,7 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
       
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-primary-blue to-deep-blue text-white">
+      <section className="relative py-20 bg-linear-to-r from-primary-blue to-deep-blue text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -209,7 +209,7 @@ const ServicesPage = () => {
                     alt={service.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                   <div className={`absolute bottom-4 left-4 p-2 rounded-xl ${service.iconBg}`}>
                     {service.icon}
                   </div>
@@ -263,7 +263,7 @@ const ServicesPage = () => {
               <div key={service.id}>
                 <div className="relative h-64 overflow-hidden">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                   <button 
                     onClick={() => setActiveService(0)}
                     className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70"
@@ -393,7 +393,7 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-blue to-deep-blue text-white">
+      <section className="py-20 bg-linear-to-r from-primary-blue to-deep-blue text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Need a Custom Solution?</h2>
           <p className="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
