@@ -1,134 +1,81 @@
-import 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-import {
-  Facebook,   // ✅ Use this
-  Twitter,    // ✅ Use this
-  Linkedin,   // ✅ Use this (note: lowercase 'i')
-  Instagram,  // ✅ Use this
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Factory
-} from "lucide-react";
+import { useTranslation } from 'react-i18next';
+import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import logo from '/Logo.jpg';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6">
+    <footer className="bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        
+        {/* Simple 3 Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Factory className="w-8 h-8 text-blue-400" />
-              <h3 className="text-xl font-bold">Alpha Line PLC</h3>
+          {/* Logo & Company - Column 1 */}
+          <div className="text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
+              <img 
+                src={logo} 
+                alt="Alpha Line Engineering Logo" 
+                className="w-10 h-10 object-contain"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                }}
+              />
+              <div>
+                <h3 className="font-bold text-lg">Alpha Line Engineering</h3>
+                <p className="text-xs text-gray-400">Grade-1 Engineering Firm</p>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm mb-4">
-              Leading engineering firm specializing in industrial automation, 
-              control systems, and engineering solutions since 1995.
+            <p className="text-gray-400 text-sm mb-3">
+              Specializing in OSP engineering, telecom, and power projects.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition-colors duration-300">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition-colors duration-300">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition-colors duration-300">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href="#" className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition-colors duration-300">
-                <Instagram className="w-4 h-4" />
-              </a>
+            {/* Social Icons */}
+            <div className="flex justify-center md:justify-start gap-3">
+              <a href="#" className="text-gray-400 hover:text-orange-500 transition"><Facebook className="w-4 h-4" /></a>
+              <a href="#" className="text-gray-400 hover:text-orange-500 transition"><Twitter className="w-4 h-4" /></a>
+              <a href="#" className="text-gray-400 hover:text-orange-500 transition"><Linkedin className="w-4 h-4" /></a>
+              <a href="#" className="text-gray-400 hover:text-orange-500 transition"><Instagram className="w-4 h-4" /></a>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-blue-400">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/service" className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
-                  Our Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/testimonial" className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
+          
+          {/* Quick Links - Column 2 */}
+          <div className="text-center">
+            <h4 className="font-semibold mb-3 text-orange-500">Quick Links</h4>
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
+              <Link to="/" className="text-gray-400 hover:text-orange-500 transition">Home</Link>
+              <Link to="/about" className="text-gray-400 hover:text-orange-500 transition">About</Link>
+              <Link to="/services" className="text-gray-400 hover:text-orange-500 transition">Services</Link>
+              <Link to="/projects" className="text-gray-400 hover:text-orange-500 transition">Projects</Link>
+              <Link to="/contact" className="text-gray-400 hover:text-orange-500 transition">Contact</Link>
+            </div>
           </div>
-
-          {/* Engineering Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-blue-400">Engineering Services</h4>
-            <ul className="space-y-2">
-              <li className="text-gray-400 text-sm">PLC Programming</li>
-              <li className="text-gray-400 text-sm">SCADA Systems</li>
-              <li className="text-gray-400 text-sm">Industrial Automation</li>
-              <li className="text-gray-400 text-sm">Control Panel Design</li>
-              <li className="text-gray-400 text-sm">Electrical Engineering</li>
-              <li className="text-gray-400 text-sm">24/7 Technical Support</li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-blue-400">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                <p className="text-gray-400 text-sm">
-                  123 Engineering Road, Industrial Area<br />
-                  Addis Ababa, Ethiopia
-                </p>
+          
+          {/* Contact Info - Column 3 */}
+          <div className="text-center md:text-right">
+            <h4 className="font-semibold mb-3 text-orange-500">Contact</h4>
+            <div className="space-y-1 text-sm text-gray-400">
+              <div className="flex items-center justify-center md:justify-end gap-2">
+                <Phone className="w-3 h-3" /> <span>+251 11 123 4567</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-400" />
-                <p className="text-gray-400 text-sm">+251 11 123 4567</p>
+              <div className="flex items-center justify-center md:justify-end gap-2">
+                <Mail className="w-3 h-3" /> <span>info@alphalineengineering.com</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-400" />
-                <p className="text-gray-400 text-sm">info@alphaline.com</p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Clock className="w-5 h-5 text-blue-400" />
-                <p className="text-gray-400 text-sm">Mon-Fri: 8:00 AM - 6:00 PM</p>
+              <div className="flex items-center justify-center md:justify-end gap-2">
+                <MapPin className="w-3 h-3" /> <span>Addis Ababa, Ethiopia</span>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-6 mt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm text-center">
-              &copy; {currentYear} Alpha Line PLC. All rights reserved.
-            </p>
-            <p className="text-gray-500 text-sm text-center mt-2 md:mt-0">
-              Engineering Excellence | Industrial Automation Specialists
-            </p>
-          </div>
+        
+        {/* Copyright */}
+        <div className="text-center text-gray-500 text-xs pt-6 mt-6 border-t border-gray-800">
+          © {currentYear} Alpha Line Engineering PLC. All rights reserved.
         </div>
       </div>
     </footer>

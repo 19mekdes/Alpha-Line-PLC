@@ -1,520 +1,414 @@
-import  { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { 
-  ArrowRight, 
-  CheckCircle, 
-  Settings, 
-  Cpu, 
-  
-  Zap,
-  
-  Wrench,
-  X,
-  
-  Clock,
-  Phone,
-  Mail,
-  ChevronDown,
-  ChevronUp,
-  Briefcase,
-  Users,
-  Shield,
-  Award
+  Wifi, Zap, BarChart3, HardDrive, CheckCircle, 
+  ArrowRight, MapPin, Clock, Users, Shield, 
+  FileText, PenTool, TowerControl, Cable, 
+  Battery, Clipboard, Compass, Phone, Mail
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import SectionLabel from '../components/SectionLabel';
-import ServiceCard from '../components/ServiceCard';
-// eslint-disable-next-line no-unused-vars
-import StatBlock from '../components/StatBlock';
-import { servicesData, companyInfo } from '../data/siteData';
 
 const ServicesPage = () => {
-  const [selectedService, setSelectedService] = useState(null);
-  const [filter, setFilter] = useState('all');
-  const [expandedFaq, setExpandedFaq] = useState(null);
+  const { t, i18n } = useTranslation();
+  const isAmharic = i18n.language === 'am';
+  const [activeService, setActiveService] = useState(0);
 
-  // Service categories
-  const categories = [
-    { id: 'all', name: 'All Services', icon: <Settings className="w-4 h-4" /> },
-    { id: 'automation', name: 'Automation', icon: <Cpu className="w-4 h-4" /> },
-    { id: 'programming', name: 'Programming', icon: <Settings className="w-4 h-4" /> },
-    { id: 'electrical', name: 'Electrical', icon: <Zap className="w-4 h-4" /> },
-    { id: 'support', name: 'Support', icon: <Wrench className="w-4 h-4" /> }
-  ];
-
-  // Filter services based on category
-  const filteredServices = filter === 'all' 
-    ? servicesData 
-    : servicesData.filter(service => {
-        if (filter === 'automation') return service.title.includes('Automation') || service.title.includes('SCADA');
-        if (filter === 'programming') return service.title.includes('PLC') || service.title.includes('Programming');
-        if (filter === 'electrical') return service.title.includes('Electrical') || service.title.includes('Control');
-        if (filter === 'support') return service.title.includes('Support') || service.title.includes('Technical');
-        return true;
-      });
-
-  // Service process steps
-  const processSteps = [
+  const services = [
     {
-      step: 1,
-      title: "Consultation",
-      description: "We understand your requirements and assess your needs",
-      icon: <Users className="w-6 h-6" />
+      id: 1,
+      title: "Telecom Infrastructure",
+      titleAm: "ቴሌኮም መሠረተ ልማት",
+      icon: <Wifi className="w-8 h-8" />,
+      iconBg: "bg-blue-100 text-blue-600",
+      description: "Comprehensive fiber optic installation, OSP design (HLD/LLD), tower maintenance, and network deployment solutions.",
+      descriptionAm: "አጠቃላይ የፋይበር ኦፕቲክ መትከል፣ የOSP ዲዛይን (HLD/LLD)፣ የማማ ጥገና እና የኔትወርክ መዘርጋት መፍትሄዎች።",
+      longDescription: "We provide end-to-end telecom infrastructure solutions that ensure reliable connectivity. Our team specializes in designing and deploying fiber optic networks, maintaining communication towers, and implementing OSP (Outside Plant) engineering for telecom operators across Ethiopia.",
+      features: [
+        "Fiber Optic Installation (Aerial & Underground)",
+        "OSP Design (HLD/LLD) using AutoCAD & GIS",
+        "Tower Maintenance & Inspection",
+        "Network Deployment & Integration",
+        "Site Acquisition & Permitting",
+        "Quality Testing & Commissioning"
+      ],
+      benefits: [
+        "99.9% Network Uptime Guarantee",
+        "24/7 Emergency Response",
+        "ISO Certified Processes",
+        "Experienced Engineering Team"
+      ],
+      image: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
+      process: [
+        "Site Survey & Planning",
+        "Route Design & Permitting",
+        "Material Procurement",
+        "Installation & Testing",
+        "Handover & Maintenance"
+      ],
+      industries: [
+        "Telecom Operators", "ISPs", "Government", 
+        "Enterprise Networks", "Campus Networks"
+      ]
     },
     {
-      step: 2,
-      title: "Proposal",
-      description: "Detailed solution design and cost estimation",
-      icon: <Briefcase className="w-6 h-6" />
+      id: 2,
+      title: "Power & Utilities",
+      titleAm: "ሃይል እና መገልገያዎች",
+      icon: <Zap className="w-8 h-8" />,
+      iconBg: "bg-orange-100 text-orange-600",
+      description: "Utility pole installation, electrical power projects, stay rods, pole hardware, and complete electrical system supply.",
+      descriptionAm: "የመገልገያ ምሰሶ መትከል፣ የኤሌክትሪክ ሃይል ፕሮጀክቶች፣ የማቆያ ዘንጎች እና ሃርድዌር፣ እና የተሟላ የኤሌክትሪክ ስርዓት አቅርቦት።",
+      longDescription: "We deliver reliable power infrastructure solutions that bring electricity to communities and industries. From utility pole installation to complete electrical system design, our team ensures safe and efficient power distribution across Ethiopia, including challenging terrains like the Afar region.",
+      features: [
+        "Utility Pole Installation (Wood, Concrete, Steel)",
+        "Stay Rods & Pole Hardware Supply",
+        "Electrical Power Projects (LV & MV)",
+        "Transformer Installation",
+        "Power Distribution Lines",
+        "Rural Electrification Projects"
+      ],
+      benefits: [
+        "High Quality Materials",
+        "Safety Compliant Installation",
+        "Experienced Crew",
+        "On-Time Delivery"
+      ],
+      image: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg",
+      process: [
+        "Site Assessment",
+        "Material Sourcing",
+        "Pole Installation",
+        "Line Stringing",
+        "Testing & Commissioning"
+      ],
+      industries: [
+        "Utility Companies", "Industrial Parks", 
+        "Construction Sites", "Rural Communities"
+      ]
     },
     {
-      step: 3,
-      title: "Implementation",
-      description: "Professional execution with quality assurance",
-      icon: <Settings className="w-6 h-6" />
+      id: 3,
+      title: "Engineering Consultancy",
+      titleAm: "የምህንድስና ማማከር",
+      icon: <BarChart3 className="w-8 h-8" />,
+      iconBg: "bg-green-100 text-green-600",
+      description: "Professional site surveys, AutoCAD documentation, technical reporting, and feasibility studies.",
+      descriptionAm: "ሙያዊ የቦታ ጥናት፣ የኦቶካድ ሰነድ፣ የቴክኒክ ዘገባ እና የአዋጭነት ጥናቶች።",
+      longDescription: "Our consultancy services provide the technical foundation for successful infrastructure projects. We conduct detailed site surveys, create precise AutoCAD documentation, and deliver comprehensive technical reports that guide decision-making and project execution.",
+      features: [
+        "Topographic & Route Surveys",
+        "AutoCAD Design & Documentation",
+        "Technical Reporting & Analysis",
+        "Feasibility Studies",
+        "Environmental Impact Assessment",
+        "Project Cost Estimation"
+      ],
+      benefits: [
+        "Accurate Data Collection",
+        "Industry Standard Documentation",
+        "Experienced Surveyors",
+        "Fast Turnaround"
+      ],
+      image: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg",
+      process: [
+        "Client Consultation",
+        "Field Survey",
+        "Data Processing",
+        "Design & Documentation",
+        "Review & Delivery"
+      ],
+      industries: [
+        "Telecom", "Power", "Construction",
+        "Government Projects", "Private Developers"
+      ]
     },
     {
-      step: 4,
-      title: "Testing & Commissioning",
-      description: "Thorough testing and system optimization",
-      icon: <CheckCircle className="w-6 h-6" />
-    },
-    {
-      step: 5,
-      title: "Training & Handover",
-      description: "Comprehensive training and documentation",
-      icon: <Users className="w-6 h-6" />
-    },
-    {
-      step: 6,
-      title: "Support & Maintenance",
-      description: "Ongoing technical support and maintenance",
-      icon: <Shield className="w-6 h-6" />
-    }
-  ];
-
-  // FAQ Data
-  const faqs = [
-    {
-      question: "What industries do you serve?",
-      answer: "We serve a wide range of industries including manufacturing, food and beverage, pharmaceuticals, automotive, textiles, water treatment, oil and gas, and renewable energy sectors."
-    },
-    {
-      question: "How long does a typical project take?",
-      answer: "Project duration varies based on complexity and scope. Small projects may take 2-4 weeks, while large-scale industrial automation projects can take 3-6 months. We provide detailed timelines during the consultation phase."
-    },
-    {
-      question: "Do you provide ongoing support after installation?",
-      answer: "Yes, we offer comprehensive maintenance and support packages including 24/7 emergency support, preventive maintenance, remote diagnostics, and annual maintenance contracts (AMC)."
-    },
-    {
-      question: "What PLC brands do you work with?",
-      answer: "We work with all major PLC brands including Siemens (S7-1200, S7-1500), Allen-Bradley (ControlLogix, CompactLogix), Schneider Electric (Modicon), Mitsubishi, and Omron."
-    },
-    {
-      question: "Do you offer training for our staff?",
-      answer: "Absolutely! We provide comprehensive training programs for your operators and maintenance staff, including hands-on sessions, documentation, and ongoing support."
-    },
-    {
-      question: "Are your solutions scalable for future expansion?",
-      answer: "Yes, all our solutions are designed with scalability in mind. We use modular architectures that allow for easy expansion as your business grows."
+      id: 4,
+      title: "Project Management",
+      titleAm: "የፕሮጀክት አስተዳደር",
+      icon: <HardDrive className="w-8 h-8" />,
+      iconBg: "bg-purple-100 text-purple-600",
+      description: "Excavation, trenching, and infrastructure deployment in challenging terrains like the Afar-Afdera region.",
+      descriptionAm: "በአስቸጋሪ ቦታዎች ላይ ቁፋሮ ፣ ጉድጓድ እና የመሠረተ ልማት አሰማራ ፣ እንደ አፋር-አፋዴራ ክልል።",
+      longDescription: "We specialize in managing complex infrastructure projects in Ethiopia's most challenging environments. Our experienced project managers coordinate every aspect from excavation and trenching to final deployment, ensuring successful delivery even in extreme conditions like the Afar-Afdera region.",
+      features: [
+        "Excavation & Trenching Services",
+        "Infrastructure Deployment",
+        "Project Planning & Scheduling",
+        "Resource Management",
+        "Quality Control & Safety",
+        "Stakeholder Coordination"
+      ],
+      benefits: [
+        "Challenging Terrain Expertise",
+        "End-to-End Project Management",
+        "Local Workforce Integration",
+        "Risk Mitigation"
+      ],
+      image: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg",
+      process: [
+        "Project Planning",
+        "Resource Mobilization",
+        "Excavation & Trenching",
+        "Infrastructure Installation",
+        "Quality Assurance",
+        "Project Handover"
+      ],
+      industries: [
+        "Telecom Infrastructure", "Power Projects",
+        "Road Construction", "Water Projects"
+      ]
     }
   ];
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
       
       {/* Hero Section */}
-      <section 
-        className="relative h-[50vh] min-h-100 flex items-center justify-center bg-cover bg-center"
-        style={{
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')"
-        }}
-      >
-        <div className="container mx-auto px-4 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Our Engineering Services
-            </h1>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto">
-              Comprehensive industrial automation and engineering solutions tailored to your needs
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Filter Section */}
-      <section className="py-12 bg-gray-50 sticky top-16 z-40 shadow-sm">
+      <section className="relative py-20 bg-gradient-to-r from-primary-blue to-deep-blue text-white">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                onClick={() => setFilter(category.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium transition-all duration-300 ${
-                  filter === category.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {category.icon}
-                {category.name}
-              </motion.button>
-            ))}
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                Our Core Services
+              </h1>
+              <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+                Comprehensive engineering solutions for telecom and power infrastructure
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <SectionLabel 
             title="What We Offer"
             subtitle="Our Expertise"
-            description="Discover our comprehensive range of engineering services"
+            description="Detailed engineering services tailored to your project needs"
           />
           
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={filter}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {filteredServices.map((service, index) => (
-                <ServiceCard
-                  key={service.id}
-                  title={service.title}
-                  description={service.shortDesc}
-                  longDescription={service.description}
-                  icon={service.iconComponent}
-                  image={service.image}
-                  features={service.features}
-                  specifications={service.specifications}
-                  delay={index * 0.1}
-                  onLearnMore={() => setSelectedService(service)}
-                />
-              ))}
-            </motion.div>
-          </AnimatePresence>
-          
-          {filteredServices.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-12"
-            >
-              <p className="text-gray-500">No services found in this category.</p>
-            </motion.div>
-          )}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {services.map((service, idx) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className={`absolute bottom-4 left-4 p-2 rounded-xl ${service.iconBg}`}>
+                    {service.icon}
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+                    {isAmharic && service.titleAm ? service.titleAm : service.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {isAmharic && service.descriptionAm ? service.descriptionAm : service.description}
+                  </p>
+                  
+                  {/* Features List */}
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Key Features:</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {service.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                          <CheckCircle className="w-4 h-4 text-green-500" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <button 
+                    onClick={() => setActiveService(service.id)}
+                    className="text-safety-orange font-semibold flex items-center gap-1 hover:gap-2 transition-all"
+                  >
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* Detailed Service Modal */}
+      {activeService !== 0 && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setActiveService(0)}>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            className="bg-white dark:bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {services.filter(s => s.id === activeService).map(service => (
+              <div key={service.id}>
+                <div className="relative h-64 overflow-hidden">
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <button 
+                    onClick={() => setActiveService(0)}
+                    className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70"
+                  >
+                    ✕
+                  </button>
+                  <div className="absolute bottom-4 left-4 flex items-center gap-3">
+                    <div className={`p-3 rounded-xl ${service.iconBg}`}>
+                      {service.icon}
+                    </div>
+                    <h2 className="text-2xl font-bold text-white">
+                      {isAmharic && service.titleAm ? service.titleAm : service.title}
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                    {service.longDescription}
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-safety-orange" />
+                        Key Features
+                      </h3>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <CheckCircle className="w-4 h-4 text-green-500" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <Users className="w-5 h-5 text-safety-orange" />
+                        Industries We Serve
+                      </h3>
+                      <ul className="space-y-2">
+                        {service.industries.map((industry, i) => (
+                          <li key={i} className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                            <Shield className="w-4 h-4 text-blue-500" />
+                            <span>{industry}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6">
+                    <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-safety-orange" />
+                      Our Process
+                    </h3>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                      {service.process.map((step, i) => (
+                        <div key={i} className="text-center">
+                          <div className="w-8 h-8 bg-safety-orange text-white rounded-full flex items-center justify-center mx-auto mb-2 text-sm font-bold">
+                            {i + 1}
+                          </div>
+                          <p className="text-xs text-gray-600 dark:text-gray-400">{step}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-primary-blue/10 rounded-xl p-4">
+                    <h3 className="font-semibold mb-2">Ready to get started?</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                      Contact our team to discuss your project requirements
+                    </p>
+                    <div className="flex gap-4">
+                      <a href="/#quote" className="inline-flex items-center gap-2 px-4 py-2 bg-safety-orange text-white rounded-lg text-sm hover:bg-orange-700 transition">
+                        Request a Quote <ArrowRight className="w-4 h-4" />
+                      </a>
+                      <a href="tel:+251111234567" className="inline-flex items-center gap-2 px-4 py-2 border border-safety-orange text-safety-orange rounded-lg text-sm hover:bg-safety-orange hover:text-white transition">
+                        <Phone className="w-4 h-4" /> Call Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      )}
+
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-linear-to-br from-blue-50 to-indigo-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <SectionLabel 
-            title="Why Choose Alpha Line PLC?"
+            title="Why Choose Alpha Line Engineering?"
             subtitle="Our Advantages"
-            description="What makes us the preferred engineering partner"
+            description="What sets us apart from the competition"
           />
           
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Award className="w-12 h-12" />,
-                title: "25+ Years Experience",
-                description: "Decades of proven expertise in industrial automation"
-              },
-              {
-                icon: <Shield className="w-12 h-12" />,
-                title: "Quality Assured",
-                description: "ISO 9001:2023 certified processes and procedures"
-              },
-              {
-                icon: <Users className="w-12 h-12" />,
-                title: "Expert Team",
-                description: "50+ certified professional engineers"
-              },
-              {
-                icon: <Clock className="w-12 h-12" />,
-                title: "24/7 Support",
-                description: "Round-the-clock technical assistance"
-              },
-              {
-                icon: <CheckCircle className="w-12 h-12" />,
-                title: "Proven Track Record",
-                description: "500+ successfully completed projects"
-              },
-              {
-                icon: <Settings className="w-12 h-12" />,
-                title: "Cutting-edge Solutions",
-                description: "Latest technology and Industry 4.0 ready"
-              }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-blue-600 mb-4 flex justify-center">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Process Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionLabel 
-            title="Our Service Process"
-            subtitle="How We Work"
-            description="A systematic approach to delivering engineering excellence"
-          />
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {processSteps.map((step, idx) => (
-              <motion.div
-                key={step.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="relative group"
-              >
-                <div className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                      {step.step}
-                    </div>
-                    <div className="text-blue-600">
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
-                </div>
-                {step.step < processSteps.length && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-blue-400">
-                    <ChevronDown className="w-6 h-6 -rotate-90" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionLabel 
-            title="Frequently Asked Questions"
-            subtitle="Common Queries"
-            description="Find answers to common questions about our services"
-          />
-          
-          <div className="max-w-3xl mx-auto">
-            {faqs.map((faq, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className="mb-4"
-              >
-                <button
-                  onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                  className="w-full bg-white rounded-xl p-6 text-left shadow-md hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
-                    {expandedFaq === idx ? (
-                      <ChevronUp className="w-5 h-5 text-blue-600" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-blue-600" />
-                    )}
-                  </div>
-                  <AnimatePresence>
-                    {expandedFaq === idx && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="mt-4"
-                      >
-                        <p className="text-gray-600">{faq.answer}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
-              </motion.div>
-            ))}
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Expert Team</h3>
+              <p className="text-gray-600 dark:text-gray-400">25+ professional engineers with years of industry experience</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Quality Assured</h3>
+              <p className="text-gray-600 dark:text-gray-400">ISO-certified processes and international quality standards</p>
+            </div>
+            
+            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Nationwide Reach</h3>
+              <p className="text-gray-600 dark:text-gray-400">Experience working in all regions including Afar-Afdera</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-r from-blue-600 to-blue-800 text-white">
+      <section className="py-20 bg-gradient-to-r from-primary-blue to-deep-blue text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-              Contact our engineering team for a free consultation and quote
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
-              >
-                Request a Quote
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
-              >
-                Contact Our Team
-              </Link>
-            </div>
-            
-            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-6 text-sm">
-              <div className="flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4" />
-                <span>{companyInfo.phone}</span>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Mail className="w-4 h-4" />
-                <span>{companyInfo.email}</span>
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>24/7 Technical Support</span>
-              </div>
-            </div>
-          </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need a Custom Solution?</h2>
+          <p className="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+            Contact our team to discuss your specific project requirements
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#quote" className="inline-flex items-center px-8 py-3 bg-safety-orange hover:bg-orange-700 rounded-lg transition">
+              Request a Quote <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+            <a href="mailto:info@alphalineengineering.com" className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-primary-blue transition">
+              <Mail className="mr-2 w-5 h-5" /> Email Us
+            </a>
+          </div>
         </div>
       </section>
-
-      {/* Service Details Modal */}
-      <AnimatePresence>
-        {selectedService && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
-            onClick={() => setSelectedService(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Header */}
-              <div className="relative h-64 bg-cover bg-center" style={{ backgroundImage: selectedService.image ? `url(${selectedService.image})` : 'none' }}>
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
-                <button
-                  onClick={() => setSelectedService(null)}
-                  className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-                >
-                  <X className="w-5 h-5 text-white" />
-                </button>
-                <div className="absolute bottom-4 left-4">
-                  <div className="flex items-center gap-3">
-                    <div className="bg-blue-600 p-3 rounded-xl">
-                      {selectedService.iconComponent && <selectedService.iconComponent className="w-8 h-8 text-white" />}
-                    </div>
-                    <h2 className="text-3xl font-bold text-white">{selectedService.title}</h2>
-                  </div>
-                </div>
-              </div>
-
-              {/* Modal Content */}
-              <div className="p-6">
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  {selectedService.description}
-                </p>
-
-                {/* Features */}
-                {selectedService.features && selectedService.features.length > 0 && (
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold mb-3">Key Features:</h3>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {selectedService.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Specifications */}
-                {selectedService.specifications && Object.keys(selectedService.specifications).length > 0 && (
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold mb-3">Technical Specifications:</h3>
-                    <div className="bg-gray-50 rounded-xl p-4">
-                      {Object.entries(selectedService.specifications).map(([key, value]) => (
-                        <div key={key} className="flex justify-between py-2 border-b border-gray-200 last:border-0">
-                          <span className="font-medium text-gray-700">{key}:</span>
-                          <span className="text-gray-600">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* CTA Buttons */}
-                <div className="flex gap-4 mt-6">
-                  <button
-                    onClick={() => setSelectedService(null)}
-                    className="flex-1 px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
-                  >
-                    Close
-                  </button>
-                  <Link
-                    to="/contact"
-                    onClick={() => setSelectedService(null)}
-                    className="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center"
-                  >
-                    Request This Service
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
     </div>
   );
 };

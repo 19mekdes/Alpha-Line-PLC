@@ -1,41 +1,41 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Factory } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+import { useTranslation } from 'react-i18next';
+import { Menu, X, Globe, Phone, Mail } from 'lucide-react';
+
+// Import local logo
+import logo from '/Logo.jpg';  // If logo is in public folder
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
-  const [, setServicesOpen] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
-    setServicesOpen(false);
   }, [location]);
 
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'am' : 'en';
+    i18n.changeLanguage(newLang);
+    localStorage.setItem('language', newLang);
+  };
+
   const navLinks = [
-    { path: '/', name: 'Home' },
-    { path: '/about', name: 'About' },
-    { path: '/service', name: 'Services' },
-    { path: '/testimonial', name: 'Testimonials' },
-    { path: '/contact', name: 'Contact' },
+    { path: '/', name: t('nav.home') },
+    { path: '/about', name: t('nav.about') },
+    { path: '/services', name: t('nav.services') },
+    { path: '/projects', name: t('nav.projects') },
+    { path: '/partners', name: t('nav.partners') },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -48,17 +48,18 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link 
-            to="/" 
-            className="flex items-center space-x-2 group"
-          >
-            <Factory className="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300" />
+          {/* Logo with Image */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img 
+              src={logo} 
+              alt="Alpha Line Engineering Logo" 
+              className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 dark:text-white">
-                Alpha Line<span className="text-blue-600 dark:text-blue-400"> PLC</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                ALPHA LINE ENGINEERING PLC
               </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400 hidden sm:block">Engineering Excellence</span>
+              
             </div>
           </Link>
 
@@ -70,32 +71,45 @@ const Navbar = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    ? 'text-safety-orange dark:text-safety-orange bg-orange-50 dark:bg-orange-900/20'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-safety-orange dark:hover:text-safety-orange hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
             
-            {/* Theme Toggle Button */}
-            <ThemeToggle />
-            
-            {/* CTA Button */}
-            <Link
-              to="/contact"
-              className="ml-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105"
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors ml-2"
+              aria-label="Toggle language"
             >
-              Get Quote
-            </Link>
+              <Globe className="w-4 h-4" />
+              <span className="text-sm font-medium">{i18n.language === 'en' ? 'አማርኛ' : 'English'}</span>
+            </button>
+            
+            {/* Quote Button */}
+            <a
+              href="/#quote"
+              className="ml-4 px-6 py-2 bg-safety-orange hover:bg-orange-700 text-white rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 shadow-md"
+            >
+              {t('nav.quote')}
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle />
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-900 dark:text-white focus:outline-none p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={toggleLanguage}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle language"
+            >
+              <Globe className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -107,7 +121,7 @@ const Navbar = () => {
         <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-gray-100 dark:bg-gray-800 rounded-lg py-2 space-y-1">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg py-2 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -115,22 +129,37 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-gray-700'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    ? 'text-safety-orange bg-orange-50 dark:bg-orange-900/20'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-safety-orange dark:hover:text-safety-orange hover:bg-gray-100 dark:hover:bg-gray-700'
                 }`}
               >
                 <span className="text-sm font-medium">{link.name}</span>
               </Link>
             ))}
             
-            {/* Mobile CTA Button */}
-            <Link
-              to="/contact"
+            {/* Mobile Quote Button */}
+            <a
+              href="/#quote"
               onClick={() => setIsOpen(false)}
-              className="block mx-4 mt-3 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium text-center transition-all duration-300"
+              className="block mx-4 mt-3 px-4 py-3 bg-safety-orange hover:bg-orange-700 text-white rounded-lg text-sm font-medium text-center transition-all duration-300"
             >
-              Get a Quote
-            </Link>
+              {t('nav.quote')}
+            </a>
+            
+            {/* Mobile Contact Info */}
+            <div className="px-4 pt-4 pb-2 mt-2 border-t border-gray-200 dark:border-gray-700">
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Need help? Contact us:</p>
+              <div className="flex items-center gap-4 text-xs">
+                <a href="tel:+251111234567" className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-safety-orange">
+                  <Phone className="w-3 h-3" />
+                  Call
+                </a>
+                <a href="mailto:info@alphalineengineering.com" className="flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-safety-orange">
+                  <Mail className="w-3 h-3" />
+                  Email
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
