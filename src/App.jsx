@@ -30,7 +30,6 @@ const ScrollToTop = () => {
   return null;
 };
 
-// Page Transition Component
 const PageTransition = ({ children }) => {
   return (
     <motion.div

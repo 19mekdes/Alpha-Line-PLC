@@ -20,8 +20,6 @@ import SectionLabel from '../components/SectionLabel';
 const PartnersPage = () => {
   const { t, i18n } = useTranslation();
   const isAmharic = i18n.language === 'am';
-
-  // Partner Categories
   const partnerCategories = [
     {
       title: "Strategic Partners",
@@ -107,7 +105,6 @@ const PartnersPage = () => {
     }
   ];
 
-  // Collaboration Benefits
   const benefits = [
     {
       icon: <TrendingUp className="w-8 h-8" />,
