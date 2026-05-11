@@ -43,8 +43,6 @@ const PageTransition = ({ children }) => {
     </motion.div>
   );
 };
-
-// 404 Not Found Component
 const NotFoundPage = () => {
   return (
     <PageTransition>
@@ -91,7 +89,6 @@ const NotFoundPage = () => {
   );
 };
 
-// Loading Component (for route-based code splitting)
 // eslint-disable-next-line no-unused-vars
 const LoadingSpinner = () => {
   return (
