@@ -10,15 +10,23 @@ import {
   Wifi, HardDrive, Building2, ArrowRight
 } from 'lucide-react';
 
+// Import local team images
+// Place your team images in: public/images/team/
+import team1 from '/images/team1.jpg';
+import team2 from '/images/team2.jpg';
+import team3 from '/images/team3.jpg';
+import team4 from '/images/team4.jpg';
+
+
 const AboutPage = () => {
   const { t, i18n } = useTranslation();
   const isAmharic = i18n.language === 'am';
 
   // Company statistics
   const stats = [
-    { value: "50+", label: "Projects Completed", icon: Briefcase, color: "orange" },
-    { value: "25+", label: "Expert Engineers", icon: Users, color: "blue" },
-    { value: "10+", label: "Years Experience", icon: Clock, color: "orange" },
+    { value: "2+", label: "Projects Completed", icon: Briefcase, color: "orange" },
+    { value: "3+", label: "Expert Engineers", icon: Users, color: "blue" },
+    { value: "1+", label: "Years Experience", icon: Clock, color: "orange" },
     { value: "98%", label: "Client Satisfaction", icon: TrendingUp, color: "blue" }
   ];
 
@@ -54,31 +62,37 @@ const AboutPage = () => {
     }
   ];
 
-  // Team members
+  // Team members with LOCAL IMAGES
   const teamMembers = [
     {
-      name: "Eng. Tekle Berhan",
+      name: "Eng. Henok Badige",
       position: "Chief Executive Officer",
       positionAm: "ዋና ሥራ አስፈፃሚ",
       specialty: "Infrastructure Engineering",
       specialtyAm: "መሠረተ ልማት ምህንድስና",
-      experience: "20+ years",
+      experience: "4+ years",
+      image: team1,
+      alt: "Eng. Henok Badige - CEO"
     },
     {
-      name: "Eng. Almaz Desta",
+      name: "Eng. Melkamu",
       position: "Technical Director",
       positionAm: "ቴክኒክ ዳይሬክተር",
       specialty: "Telecom & OSP",
       specialtyAm: "ቴሌኮም እና ኦኤስፒ",
-      experience: "15+ years",
+      experience: "3+years",
+      image: team2,
+      alt: "Eng. Melkamu - Technical Director"
     },
     {
-      name: "Eng. Worku Alemayehu",
+      name: "Eng. yigzaw",
       position: "Projects Manager",
       positionAm: "ፕሮጀክቶች አስተዳዳሪ",
       specialty: "Power & Utilities",
       specialtyAm: "ሃይል እና መገልገያዎች",
-      experience: "12+ years",
+      experience: "2+ years",
+      image: team3,
+      alt: "Eng. yigzaw - Projects Manager"
     },
     {
       name: "Eng. Marta Getachew",
@@ -87,6 +101,8 @@ const AboutPage = () => {
       specialty: "AutoCAD & Documentation",
       specialtyAm: "ኦቶካድ እና ሰነድ",
       experience: "10+ years",
+      image: team4,
+      alt: "Eng. Marta Getachew - Lead Design Engineer"
     }
   ];
 
@@ -111,9 +127,7 @@ const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-block px-4 py-1 bg-orange-500 rounded-full text-sm font-semibold mb-4">
-              Grade-1 Engineering Firm
-            </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               {t('about.title')}
             </h1>
@@ -124,7 +138,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Company Profile Section - Without Border */}
+      {/* Company Profile Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -133,9 +147,7 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-block px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
-                {t('about.subtitle')}
-              </div>
+              
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Ethiopia's Leading Engineering Firm
               </h2>
@@ -154,15 +166,11 @@ const AboutPage = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-5 h-5 text-orange-500" />
-                  <span className="text-gray-700">Est. 2015</span>
+                  <span className="text-gray-700">Est. 2018</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">ISO Certified</span>
-                <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Grade-1 License</span>
-                <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">24/7 Support</span>
-              </div>
+              
             </motion.div>
 
             <motion.div
@@ -184,12 +192,10 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Mission & Vision Section - Cards with Border */}
+      {/* Mission & Vision Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8">
-            
-            {/* Mission Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +211,6 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            {/* Vision Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -224,7 +229,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Core Values Section - Cards with Border */}
+      {/* Core Values Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -257,7 +262,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team Section - Cards with Border */}
+      {/* Team Section with LOCAL IMAGES */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -275,8 +280,18 @@ const AboutPage = () => {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all border border-gray-200"
               >
-                <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
-                  <Users className="w-10 h-10 text-white" />
+                {/* Team Member Image */}
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
+                  <img 
+                    src={member.image} 
+                    alt={member.alt}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center"><Users class="w-10 h-10 text-white" /></div>';
+                    }}
+                  />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
                 <p className="text-orange-600 text-sm font-medium mb-2">
@@ -294,7 +309,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Expertise Areas - Badges with Border */}
+      {/* Expertise Areas */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
