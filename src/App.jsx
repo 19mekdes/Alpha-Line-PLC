@@ -5,11 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Import i18n for multilingual support
 import './i18n';
 
-// Layout Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Page Components
 import HomePage from './Pages/Home';
 import AboutPage from './Pages/About';
 import ServicesPage from './Pages/Services';

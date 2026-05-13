@@ -17,7 +17,6 @@ const ProjectsPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('gallery');
 
-  // Projects Data with Afdera Focus
   const projects = [
     {
       id: 1,
