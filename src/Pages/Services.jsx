@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { 
-  Wifi, Zap, BarChart3, HardDrive, CheckCircle, 
+  Wifi, Zap, PenTool, HardDrive, CheckCircle, 
   ArrowRight, MapPin, Clock, Users, Shield, 
-  FileText, PenTool, TowerControl, Cable, 
-  Battery, Clipboard, Compass, Phone, Mail
+  Phone, Mail, Globe, Award, TrendingUp,
+  Briefcase, Ruler,  Cable, Settings
 } from 'lucide-react';
-import SectionLabel from '../components/SectionLabel';
 
 const ServicesPage = () => {
   const { t, i18n } = useTranslation();
   const isAmharic = i18n.language === 'am';
-  const [activeService, setActiveService] = useState(0);
+  const [activeService, setActiveService] = useState(null);
 
   const services = [
     {
       id: 1,
       title: "Telecom Infrastructure",
       titleAm: "ቴሌኮም መሠረተ ልማት",
-      icon: <Wifi className="w-8 h-8" />,
+      shortDesc: "Fiber optic installation, OSP design (HLD/LLD), and tower maintenance",
+      shortDescAm: "የፋይበር ኦፕቲክ መትከል፣ የOSP ዲዛይን (HLD/LLD) እና የማማ ጥገና",
+      description: "We provide end-to-end telecom infrastructure solutions ensuring reliable connectivity across Ethiopia. Our team specializes in fiber optic networks, communication tower maintenance, and OSP engineering for telecom operators and government institutions.",
+      longDescription: "With years of experience in Ethiopia's telecommunications sector, Alpha Line Engineering PLC delivers comprehensive infrastructure solutions that form the backbone of modern communication networks. Our expertise spans from initial site surveys to final commissioning, ensuring seamless integration with existing systems. We work in both urban and remote areas, including challenging terrains like the Afar region, bringing connectivity to underserved communities.",
+      icon: <Wifi className="w-10 h-10" />,
       iconBg: "bg-blue-100 text-blue-600",
-      description: "Comprehensive fiber optic installation, OSP design (HLD/LLD), tower maintenance, and network deployment solutions.",
-      descriptionAm: "አጠቃላይ የፋይበር ኦፕቲክ መትከል፣ የOSP ዲዛይን (HLD/LLD)፣ የማማ ጥገና እና የኔትወርክ መዘርጋት መፍትሄዎች።",
-      longDescription: "We provide end-to-end telecom infrastructure solutions that ensure reliable connectivity. Our team specializes in designing and deploying fiber optic networks, maintaining communication towers, and implementing OSP (Outside Plant) engineering for telecom operators across Ethiopia.",
+      image: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
       features: [
         "Fiber Optic Installation (Aerial & Underground)",
         "OSP Design (HLD/LLD) using AutoCAD & GIS",
@@ -32,34 +34,20 @@ const ServicesPage = () => {
         "Site Acquisition & Permitting",
         "Quality Testing & Commissioning"
       ],
-      benefits: [
-        "99.9% Network Uptime Guarantee",
-        "24/7 Emergency Response",
-        "ISO Certified Processes",
-        "Experienced Engineering Team"
-      ],
-      image: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
-      process: [
-        "Site Survey & Planning",
-        "Route Design & Permitting",
-        "Material Procurement",
-        "Installation & Testing",
-        "Handover & Maintenance"
-      ],
-      industries: [
-        "Telecom Operators", "ISPs", "Government", 
-        "Enterprise Networks", "Campus Networks"
-      ]
+      process: ["Site Survey", "Route Design", "Installation", "Testing", "Handover"],
+      industries: ["Telecom Operators", "ISPs", "Government", "Enterprise Networks"]
     },
     {
       id: 2,
       title: "Power & Utilities",
       titleAm: "ሃይል እና መገልገያዎች",
-      icon: <Zap className="w-8 h-8" />,
+      shortDesc: "Utility pole installation, electrical power projects, and hardware supply",
+      shortDescAm: "የመገልገያ ምሰሶ መትከል፣ የኤሌክትሪክ ሃይል ፕሮጀክቶች እና ሃርድዌር አቅርቦት",
+      description: "We deliver reliable power infrastructure solutions bringing electricity to communities and industries. From utility pole installation to complete electrical system design, we ensure safe and efficient power distribution across Ethiopia.",
+      longDescription: "Access to reliable electricity is fundamental for development. Alpha Line Engineering PLC is committed to expanding Ethiopia's power infrastructure through high-quality installation and maintenance services. Our team has successfully completed projects in remote areas, including the Afar-Afdera region, overcoming extreme temperatures and difficult terrain. We supply premium hardware components including stay rods, pole hardware, transformers, and complete electrical systems.",
+      icon: <Zap className="w-10 h-10" />,
       iconBg: "bg-orange-100 text-orange-600",
-      description: "Utility pole installation, electrical power projects, stay rods, pole hardware, and complete electrical system supply.",
-      descriptionAm: "የመገልገያ ምሰሶ መትከል፣ የኤሌክትሪክ ሃይል ፕሮጀክቶች፣ የማቆያ ዘንጎች እና ሃርድዌር፣ እና የተሟላ የኤሌክትሪክ ስርዓት አቅርቦት።",
-      longDescription: "We deliver reliable power infrastructure solutions that bring electricity to communities and industries. From utility pole installation to complete electrical system design, our team ensures safe and efficient power distribution across Ethiopia, including challenging terrains like the Afar region.",
+      image: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
       features: [
         "Utility Pole Installation (Wood, Concrete, Steel)",
         "Stay Rods & Pole Hardware Supply",
@@ -68,34 +56,20 @@ const ServicesPage = () => {
         "Power Distribution Lines",
         "Rural Electrification Projects"
       ],
-      benefits: [
-        "High Quality Materials",
-        "Safety Compliant Installation",
-        "Experienced Crew",
-        "On-Time Delivery"
-      ],
-      image: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg",
-      process: [
-        "Site Assessment",
-        "Material Sourcing",
-        "Pole Installation",
-        "Line Stringing",
-        "Testing & Commissioning"
-      ],
-      industries: [
-        "Utility Companies", "Industrial Parks", 
-        "Construction Sites", "Rural Communities"
-      ]
+      process: ["Site Assessment", "Material Sourcing", "Pole Installation", "Line Stringing", "Commissioning"],
+      industries: ["Utility Companies", "Industrial Parks", "Construction Sites", "Rural Communities"]
     },
     {
       id: 3,
       title: "Engineering Consultancy",
       titleAm: "የምህንድስና ማማከር",
-      icon: <BarChart3 className="w-8 h-8" />,
+      shortDesc: "Site surveys, AutoCAD documentation, and technical reporting",
+      shortDescAm: "የቦታ ጥናት፣ የኦቶካድ ሰነድ እና የቴክኒክ ሪፖርት",
+      description: "Our consultancy services provide the technical foundation for successful infrastructure projects. We conduct detailed site surveys, create precise AutoCAD documentation, and deliver comprehensive technical reports.",
+      longDescription: "Before any successful infrastructure project begins, thorough planning and accurate documentation are essential. Our engineering consultancy team brings decades of combined experience to every project, ensuring that your investment is backed by solid data and professional analysis. We use the latest surveying equipment and software to deliver precise measurements, detailed designs, and actionable recommendations for telecom and power projects.",
+      icon: <PenTool className="w-10 h-10" />,
       iconBg: "bg-green-100 text-green-600",
-      description: "Professional site surveys, AutoCAD documentation, technical reporting, and feasibility studies.",
-      descriptionAm: "ሙያዊ የቦታ ጥናት፣ የኦቶካድ ሰነድ፣ የቴክኒክ ዘገባ እና የአዋጭነት ጥናቶች።",
-      longDescription: "Our consultancy services provide the technical foundation for successful infrastructure projects. We conduct detailed site surveys, create precise AutoCAD documentation, and deliver comprehensive technical reports that guide decision-making and project execution.",
+      image: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
       features: [
         "Topographic & Route Surveys",
         "AutoCAD Design & Documentation",
@@ -104,34 +78,20 @@ const ServicesPage = () => {
         "Environmental Impact Assessment",
         "Project Cost Estimation"
       ],
-      benefits: [
-        "Accurate Data Collection",
-        "Industry Standard Documentation",
-        "Experienced Surveyors",
-        "Fast Turnaround"
-      ],
-      image: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg",
-      process: [
-        "Client Consultation",
-        "Field Survey",
-        "Data Processing",
-        "Design & Documentation",
-        "Review & Delivery"
-      ],
-      industries: [
-        "Telecom", "Power", "Construction",
-        "Government Projects", "Private Developers"
-      ]
+      process: ["Consultation", "Field Survey", "Data Processing", "Design", "Delivery"],
+      industries: ["Telecom", "Power", "Construction", "Government", "Private Developers"]
     },
     {
       id: 4,
       title: "Project Management",
       titleAm: "የፕሮጀክት አስተዳደር",
-      icon: <HardDrive className="w-8 h-8" />,
+      shortDesc: "Excavation, trenching, and infrastructure deployment in challenging terrains",
+      shortDescAm: "በአስቸጋሪ ቦታዎች ላይ ቁፋሮ ፣ ጉድጓድ እና የመሠረተ ልማት አሰማራ",
+      description: "We specialize in managing complex infrastructure projects in Ethiopia's most challenging environments, including the Afar-Afdera region with extreme temperatures and difficult terrain.",
+      longDescription: "Project management in challenging environments requires specialized expertise, careful planning, and adaptive strategies. Alpha Line Engineering PLC has proven experience delivering successful projects in the Afar-Afdera region, where temperatures exceed 45°C and terrain is extremely difficult. Our project managers coordinate every aspect from excavation and trenching to final deployment, ensuring successful delivery even under the most demanding conditions.",
+      icon: <HardDrive className="w-10 h-10" />,
       iconBg: "bg-purple-100 text-purple-600",
-      description: "Excavation, trenching, and infrastructure deployment in challenging terrains like the Afar-Afdera region.",
-      descriptionAm: "በአስቸጋሪ ቦታዎች ላይ ቁፋሮ ፣ ጉድጓድ እና የመሠረተ ልማት አሰማራ ፣ እንደ አፋር-አፋዴራ ክልል።",
-      longDescription: "We specialize in managing complex infrastructure projects in Ethiopia's most challenging environments. Our experienced project managers coordinate every aspect from excavation and trenching to final deployment, ensuring successful delivery even in extreme conditions like the Afar-Afdera region.",
+      image: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
       features: [
         "Excavation & Trenching Services",
         "Infrastructure Deployment",
@@ -140,107 +100,75 @@ const ServicesPage = () => {
         "Quality Control & Safety",
         "Stakeholder Coordination"
       ],
-      benefits: [
-        "Challenging Terrain Expertise",
-        "End-to-End Project Management",
-        "Local Workforce Integration",
-        "Risk Mitigation"
-      ],
-      image: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg",
-      process: [
-        "Project Planning",
-        "Resource Mobilization",
-        "Excavation & Trenching",
-        "Infrastructure Installation",
-        "Quality Assurance",
-        "Project Handover"
-      ],
-      industries: [
-        "Telecom Infrastructure", "Power Projects",
-        "Road Construction", "Water Projects"
-      ]
+      process: ["Planning", "Mobilization", "Excavation", "Installation", "Handover"],
+      industries: ["Telecom Infrastructure", "Power Projects", "Road Construction", "Water Projects"]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
+    <div className="min-h-screen bg-white">
       
-      {/* Hero Section */}
-      <section className="relative py-20 bg-linear-to-r from-primary-blue to-deep-blue text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Our Core Services
-              </h1>
-              <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
-                Comprehensive engineering solutions for telecom and power infrastructure
-              </p>
-            </motion.div>
-          </div>
+      {/* Hero Section - White Background with Blue Text */}
+      <section className="relative py-20 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-700 mb-4">
+              {isAmharic ? "ዋና አገልግሎቶቻችን" : "Our Core Services"}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              {isAmharic 
+                ? "ለቴሌኮም እና ለኤሌክትሪክ መሠረተ ልማት አጠቃላይ የምህንድስና መፍትሄዎች"
+                : "Comprehensive engineering solutions for telecom and power infrastructure across Ethiopia"}
+            </p>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mt-6 rounded-full" />
+          </motion.div>
         </div>
       </section>
 
-      {/* Services Grid Section */}
-      <section className="py-20">
+      {/* Services Grid - White Background */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <SectionLabel 
-            title="What We Offer"
-            subtitle="Our Expertise"
-            description="Detailed engineering services tailored to your project needs"
-          />
-          
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, idx) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group border border-gray-100"
+                onClick={() => setActiveService(service)}
               >
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className={`absolute bottom-4 left-4 p-2 rounded-xl ${service.iconBg}`}>
                     {service.icon}
                   </div>
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-2 text-gray-900 line-clamp-1">
                     {isAmharic && service.titleAm ? service.titleAm : service.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {isAmharic && service.descriptionAm ? service.descriptionAm : service.description}
+                  <p className="text-gray-500 text-sm mb-3 line-clamp-2">
+                    {isAmharic && service.shortDescAm ? service.shortDescAm : service.shortDesc}
                   </p>
-                  
-                  {/* Features List */}
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Key Features:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {service.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {service.features.slice(0, 2).map((feature, i) => (
+                      <span key={i} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                        {feature.length > 20 ? feature.substring(0, 20) + '...' : feature}
+                      </span>
+                    ))}
                   </div>
-                  
-                  <button 
-                    onClick={() => setActiveService(service.id)}
-                    className="text-safety-orange font-semibold flex items-center gap-1 hover:gap-2 transition-all"
-                  >
-                    Learn More <ArrowRight className="w-4 h-4" />
+                  <button className="text-orange-500 font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                    {isAmharic ? "ተጨማሪ ይወቁ" : "Learn More"} <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
               </motion.div>
@@ -249,166 +177,171 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Detailed Service Modal */}
-      {activeService !== 0 && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setActiveService(0)}>
+      {/* Why Choose Us Section - White Background */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              {isAmharic ? "ለምን አልፋ መስመር ኢንጂነሪንግን ይምረጡ?" : "Why Choose Alpha Line Engineering?"}
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              {isAmharic ? "በኢትዮጵያ ውስጥ ተመራጭ የምህንድስና አጋር የሚያደርጉን ምክንያቶች" : "What makes us the preferred engineering partner in Ethiopia"}
+            </p>
+            <div className="w-16 h-1 bg-orange-500 mx-auto mt-3 rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: <Award className="w-7 h-7" />, title: isAmharic ? "ደረጃ 1 ፈቃድ" : "Grade-1 Licensed", desc: isAmharic ? "ከፍተኛ ደረጃ እውቅና ያለው" : "Officially recognized top-tier firm" },
+              { icon: <Shield className="w-7 h-7" />, title: isAmharic ? "አይኤስኦ እውቅና" : "ISO Certified", desc: isAmharic ? "ዓለም አቀፍ የጥራት ደረጃ" : "International quality standards" },
+              { icon: <Users className="w-7 h-7" />, title: isAmharic ? "ባለሙያ ቡድን" : "Expert Team", desc: isAmharic ? "25+ ፕሮፌሽናል መሐንዲሶች" : "25+ professional engineers" },
+              { icon: <Clock className="w-7 h-7" />, title: isAmharic ? "24/7 ድጋፍ" : "24/7 Support", desc: isAmharic ? "የሙሉ ጊዜ ቴክኒካል እርዳታ" : "Round-the-clock assistance" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="text-center p-5 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all"
+              >
+                <div className="text-orange-500 mb-3 flex justify-center">{item.icon}</div>
+                <h3 className="text-md font-bold mb-1 text-gray-800">{item.title}</h3>
+                <p className="text-gray-500 text-xs">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery Process */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              {isAmharic ? "የአገልግሎት አሰጣጥ ሂደታችን" : "Our Service Delivery Process"}
+            </h2>
+            <div className="w-16 h-1 bg-orange-500 mx-auto mt-3 rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { step: "01", title: isAmharic ? "ምክክር" : "Consultation", desc: isAmharic ? "ፍላጎቶችዎን እንገነዘባለን" : "Understanding your needs" },
+              { step: "02", title: isAmharic ? "የቦታ ጥናት" : "Site Survey", desc: isAmharic ? "ዝርዝር የቦታ ምርመራ" : "Detailed site assessment" },
+              { step: "03", title: isAmharic ? "ንድፍ እና እቅድ" : "Design & Planning", desc: isAmharic ? "የኦቶካድ ሰነድ" : "AutoCAD documentation" },
+              { step: "04", title: isAmharic ? "ትግበራ" : "Implementation", desc: isAmharic ? "ሙያዊ አፈጻጸም" : "Professional execution" },
+              { step: "05", title: isAmharic ? "ሙከራ" : "Testing", desc: isAmharic ? "ጥራት ማረጋገጫ" : "Quality assurance" },
+              { step: "06", title: isAmharic ? "ድጋፍ" : "Support", desc: isAmharic ? "ቀጣይ እርዳታ" : "Ongoing maintenance" }
+            ].map((step, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
+              >
+                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-orange-600 font-bold text-sm">{step.step}</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-800 text-sm">{step.title}</h3>
+                  <p className="text-gray-500 text-xs">{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Orange Button */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              {isAmharic ? "የምህንድስና መፍትሄ ይፈልጋሉ?" : "Need a Custom Engineering Solution?"}
+            </h2>
+            <p className="text-gray-500 mb-6">
+              {isAmharic ? "የፕሮጀክት ፍላጎቶችዎን ለመወያየት ቡድናችንን ያግኙ" : "Contact our team to discuss your specific project requirements"}
+            </p>
+            <Link to="/contact" className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-300">
+              {isAmharic ? "ዋጋ ይጠይቁ" : "Request a Quote"} <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Modal */}
+      {activeService && (
+        <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setActiveService(null)}>
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white dark:bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {services.filter(s => s.id === activeService).map(service => (
-              <div key={service.id}>
-                <div className="relative h-64 overflow-hidden">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
-                  <button 
-                    onClick={() => setActiveService(0)}
-                    className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70"
-                  >
-                    ✕
-                  </button>
-                  <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                    <div className={`p-3 rounded-xl ${service.iconBg}`}>
-                      {service.icon}
-                    </div>
-                    <h2 className="text-2xl font-bold text-white">
-                      {isAmharic && service.titleAm ? service.titleAm : service.title}
-                    </h2>
-                  </div>
+            <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-xl ${activeService.iconBg}`}>{activeService.icon}</div>
+                <h2 className="text-xl font-bold text-gray-900">
+                  {isAmharic && activeService.titleAm ? activeService.titleAm : activeService.title}
+                </h2>
+              </div>
+              <button onClick={() => setActiveService(null)} className="p-2 hover:bg-gray-100 rounded-lg text-gray-500">✕</button>
+            </div>
+            
+            <div className="p-5">
+              <img src={activeService.image} alt={activeService.title} className="w-full h-48 object-cover rounded-xl mb-4" />
+              
+              <p className="text-gray-700 mb-5 text-sm leading-relaxed">
+                {isAmharic ? (activeService.longDescriptionAm || activeService.longDescription || activeService.description) : (activeService.longDescription || activeService.description)}
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <h3 className="font-bold text-md mb-2 flex items-center gap-2 text-gray-800">
+                    <CheckCircle className="w-4 h-4 text-green-500" /> {isAmharic ? "ቁልፍ ባህሪያት" : "Key Features"}
+                  </h3>
+                  <ul className="space-y-1">
+                    {activeService.features.map((feature, i) => (
+                      <li key={i} className="flex items-center gap-2 text-gray-600 text-xs">
+                        <CheckCircle className="w-3 h-3 text-green-500" /> {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="p-6">
-                  <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    {service.longDescription}
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-6 mb-6">
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-safety-orange" />
-                        Key Features
-                      </h3>
-                      <ul className="space-y-2">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                        <Users className="w-5 h-5 text-safety-orange" />
-                        Industries We Serve
-                      </h3>
-                      <ul className="space-y-2">
-                        {service.industries.map((industry, i) => (
-                          <li key={i} className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                            <Shield className="w-4 h-4 text-blue-500" />
-                            <span>{industry}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 mb-6">
-                    <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-safety-orange" />
-                      Our Process
-                    </h3>
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                      {service.process.map((step, i) => (
-                        <div key={i} className="text-center">
-                          <div className="w-8 h-8 bg-safety-orange text-white rounded-full flex items-center justify-center mx-auto mb-2 text-sm font-bold">
-                            {i + 1}
-                          </div>
-                          <p className="text-xs text-gray-600 dark:text-gray-400">{step}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-primary-blue/10 rounded-xl p-4">
-                    <h3 className="font-semibold mb-2">Ready to get started?</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                      Contact our team to discuss your project requirements
-                    </p>
-                    <div className="flex gap-4">
-                      <a href="/#quote" className="inline-flex items-center gap-2 px-4 py-2 bg-safety-orange text-white rounded-lg text-sm hover:bg-orange-700 transition">
-                        Request a Quote <ArrowRight className="w-4 h-4" />
-                      </a>
-                      <a href="tel:+251111234567" className="inline-flex items-center gap-2 px-4 py-2 border border-safety-orange text-safety-orange rounded-lg text-sm hover:bg-safety-orange hover:text-white transition">
-                        <Phone className="w-4 h-4" /> Call Us
-                      </a>
-                    </div>
-                  </div>
+                <div>
+                  <h3 className="font-bold text-md mb-2 flex items-center gap-2 text-gray-800">
+                    <Users className="w-4 h-4 text-blue-500" /> {isAmharic ? "የምንሰራላቸው ዘርፎች" : "Industries We Serve"}
+                  </h3>
+                  <ul className="space-y-1">
+                    {activeService.industries.map((industry, i) => (
+                      <li key={i} className="flex items-center gap-2 text-gray-600 text-xs">
+                        <Shield className="w-3 h-3 text-blue-500" /> {industry}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            ))}
+
+              <div className="bg-gray-50 rounded-xl p-4 mb-5">
+                <h3 className="font-bold text-sm mb-2 text-gray-800">{isAmharic ? "ሂደታችን" : "Our Process"}</h3>
+                <div className="grid grid-cols-5 gap-2 text-center text-xs">
+                  {activeService.process.map((step, i) => (
+                    <div key={i}>
+                      <div className="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center mx-auto mb-1 text-xs">{i+1}</div>
+                      <span className="text-gray-500 text-xs">{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Link to="/contact" onClick={() => setActiveService(null)} className="block w-full text-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all text-sm">
+                {isAmharic ? "ይህን አገልግሎት ይጠይቁ" : "Request This Service"} <ArrowRight className="inline ml-1 w-3 h-3" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       )}
-
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <SectionLabel 
-            title="Why Choose Alpha Line Engineering?"
-            subtitle="Our Advantages"
-            description="What sets us apart from the competition"
-          />
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Expert Team</h3>
-              <p className="text-gray-600 dark:text-gray-400">25+ professional engineers with years of industry experience</p>
-            </div>
-            
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Quality Assured</h3>
-              <p className="text-gray-600 dark:text-gray-400">ISO-certified processes and international quality standards</p>
-            </div>
-            
-            <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Nationwide Reach</h3>
-              <p className="text-gray-600 dark:text-gray-400">Experience working in all regions including Afar-Afdera</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-linear-to-r from-primary-blue to-deep-blue text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Need a Custom Solution?</h2>
-          <p className="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
-            Contact our team to discuss your specific project requirements
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/#quote" className="inline-flex items-center px-8 py-3 bg-safety-orange hover:bg-orange-700 rounded-lg transition">
-              Request a Quote <ArrowRight className="ml-2 w-5 h-5" />
-            </a>
-            <a href="mailto:info@alphalineengineering.com" className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white rounded-lg hover:bg-white hover:text-primary-blue transition">
-              <Mail className="mr-2 w-5 h-5" /> Email Us
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

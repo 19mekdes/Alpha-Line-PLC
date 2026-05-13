@@ -1,227 +1,386 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';  // ← ADD THIS IMPORT
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { 
-  MapPin, Calendar, ArrowRight, Filter, 
-  Grid, List, Search, X, ZoomIn, Eye, Award
+  MapPin, Calendar, ArrowRight, X, ZoomIn, 
+  Eye, ChevronLeft, ChevronRight, Clock, 
+  Users, Award, TrendingUp, CheckCircle,
+  Activity, Camera, ImageIcon, Map
 } from 'lucide-react';
-import SectionLabel from '../components/SectionLabel';
-import ProjectGallery from '../components/ProjectGallery';
-import { projectsData, categories } from '../data/projectsData';
 
 const ProjectsPage = () => {
   const { t, i18n } = useTranslation();
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [viewMode, setViewMode] = useState('grid');
-  const [searchTerm, setSearchTerm] = useState('');
-
   const isAmharic = i18n.language === 'am';
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState('gallery');
 
-  const filteredProjects = projectsData.filter(project => {
-    const matchesCategory = selectedCategory === "all" || project.category === selectedCategory;
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          project.location.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const categoriesList = [
-    { id: "all", name: "All Projects", nameAm: "ሁሉም ፕሮጀክቶች", count: projectsData.length },
-    { id: "Telecom Infrastructure", name: "Telecom Infrastructure", nameAm: "ቴሌኮም መሠረተ ልማት", count: projectsData.filter(p => p.category === "Telecom Infrastructure").length },
-    { id: "Power & Utilities", name: "Power & Utilities", nameAm: "ሃይል እና መገልገያዎች", count: projectsData.filter(p => p.category === "Power & Utilities").length }
+  // Projects Data with Afdera Focus
+  const projects = [
+    {
+      id: 1,
+      title: "Afdera Utility Infrastructure Project",
+      titleAm: "አፋደራ የመገልገያ መሠረተ ልማት ፕሮጀክት",
+      location: "Afar-Afdera Region, Ethiopia",
+      locationAm: "አፋር-አፋደራ ክልል፣ ኢትዮጵያ",
+      category: "Power & Utilities",
+      completed: "2024",
+      duration: "12 months",
+      description: "Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.",
+      descriptionAm: "በአስቸጋሪው የአፋር-አፋደራ ክልል የምሰሶ መትከል፣ የፋይበር ኦፕቲክ ገመድ እና የኤሌክትሪክ ስርዓቶችን ጨምሮ ሙሉ የመገልገያ መሠረተ ልማት ማሰማራት።",
+      challenge: "Extreme temperatures reaching 45°C+, remote location with limited access, difficult rocky terrain, and logistical challenges.",
+      solution: "Specialized heat-resistant equipment, local workforce training, phased deployment approach with mobile support teams, and drone-assisted surveying.",
+      result: "Successfully deployed 50+ km of fiber optic network and 200+ utility poles serving 5,000+ residents.",
+      impact: "Reduced power outage by 75% and increased internet connectivity by 200% in the region.",
+      client: "Ethiopian Electric Utility / Ethio Telecom",
+      images: [
+        {
+          id: 1,
+          url: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
+          thumbnail: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
+          caption: "Fiber optic cable installation in Afar region",
+          captionAm: "በአፋር ክልል የፋይበር ኦፕቲክ ገመድ መትከል",
+          type: "installation",
+          date: "March 2024"
+        },
+        {
+          id: 2,
+          url: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg",
+          thumbnail: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
+          caption: "Utility pole installation team at work",
+          captionAm: "የመገልገያ ምሰሶ መትከል ቡድን በስራ ላይ",
+          type: "installation",
+          date: "April 2024"
+        },
+        {
+          id: 3,
+          url: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg",
+          thumbnail: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
+          caption: "Site survey and documentation",
+          captionAm: "የቦታ ጥናት እና ሰነድ",
+          type: "survey",
+          date: "February 2024"
+        },
+        {
+          id: 4,
+          url: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg",
+          thumbnail: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
+          caption: "Equipment and hardware setup",
+          captionAm: "የመሳሪያ እና ሃርድዌር መጫን",
+          type: "equipment",
+          date: "May 2024"
+        }
+      ],
+      beforeAfter: {
+        before: {
+          url: "https://images.pexels.com/photos/259915/pexels-photo-259915.jpeg",
+          caption: "Before: Undeveloped area with no infrastructure",
+          captionAm: "ከበፊቱ: መሠረተ ልማት የሌለው አካባቢ"
+        },
+        after: {
+          url: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
+          caption: "After: New utility poles and fiber optic network installed",
+          captionAm: "ከሆነ በኋላ: አዲስ የመገልገያ ምሰሶዎች እና የፋይበር ኦፕቲክ ኔትወርክ ተጭኗል"
+        }
+      },
+      stats: {
+        fiberKm: "50+",
+        utilityPoles: "200+",
+        households: "5,000+",
+        powerReduction: "75%"
+      }
+    },
+    {
+      id: 2,
+      title: "Addis Ababa Fiber Optic Network",
+      titleAm: "አዲስ አበባ የፋይበር ኦፕቲክ ኔትወርክ",
+      location: "Addis Ababa, Ethiopia",
+      category: "Telecom Infrastructure",
+      completed: "2023",
+      duration: "18 months",
+      description: "Design and implementation of fiber optic network infrastructure across key districts of Addis Ababa.",
+      images: [],
+      stats: {
+        fiberKm: "80+",
+        districts: "5",
+        households: "100,000+"
+      }
+    }
   ];
 
+  const afderaProject = projects[0];
+
+  const openLightbox = (images, index) => {
+    setSelectedImage({ images, index });
+    setCurrentImageIndex(index);
+  };
+
+  const nextImage = () => {
+    if (selectedImage) {
+      const newIndex = (currentImageIndex + 1) % selectedImage.images.length;
+      setCurrentImageIndex(newIndex);
+      setSelectedImage({ ...selectedImage, index: newIndex });
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedImage) {
+      const newIndex = (currentImageIndex - 1 + selectedImage.images.length) % selectedImage.images.length;
+      setCurrentImageIndex(newIndex);
+      setSelectedImage({ ...selectedImage, index: newIndex });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
-      <div className="container mx-auto px-4 py-12">
-        
-        {/* Header */}
-        <SectionLabel 
-          title={t('projects.title')}
-          subtitle={t('projects.subtitle')}
-          description={t('projects.description')}
-        />
-
-        {/* Search and Filter Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-          {/* Search */}
-          <div className="relative w-full md:w-80">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-safety-orange dark:bg-gray-800"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm('')}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2"
-              >
-                <X className="w-4 h-4 text-gray-400" />
-              </button>
-            )}
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categoriesList.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === cat.id
-                    ? 'bg-safety-orange text-white shadow-lg'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                }`}
-              >
-                {isAmharic && cat.nameAm ? cat.nameAm : cat.name} ({cat.count})
-              </button>
-            ))}
-          </div>
-
-          {/* View Toggle */}
-          <div className="flex gap-2">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-colors ${viewMode === 'grid' ? 'bg-safety-orange text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
-            >
-              <Grid className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-colors ${viewMode === 'list' ? 'bg-safety-orange text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
-            >
-              <List className="w-4 h-4" />
-            </button>
-          </div>
+    <div className="min-h-screen bg-white">
+      
+      {/* Hero Section - White Background */}
+      <section className="relative py-20 bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-700 mb-4">
+              {isAmharic ? "የእኛ ፕሮጀክቶች" : "Our Projects"}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              {isAmharic 
+                ? "በአስቸጋሪ አካባቢዎች ያለንን እውቀት በማሳየት ላይ"
+                : "Showcasing our expertise in challenging environments across Ethiopia"}
+            </p>
+            <div className="w-20 h-1 bg-orange-500 mx-auto mt-6 rounded-full" />
+          </motion.div>
         </div>
+      </section>
 
-        {/* Featured Project Banner - Afdera Project */}
-        <div className="mb-12 bg-linear-to-r from-primary-blue to-deep-blue rounded-2xl overflow-hidden shadow-xl">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="p-8 text-white">
-              <div className="inline-block px-3 py-1 bg-safety-orange rounded-full text-xs font-semibold mb-3">Featured Project</div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">
-                Afdera Utility Infrastructure Project
+      {/* Featured Project - Afdera */}
+<section className="py-16 bg-white">
+  <div className="container mx-auto px-4">
+    <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
+      <div className="grid lg:grid-cols-2 gap-8">
+        <div className="p-8 lg:p-10">
+          <div className="inline-block px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-semibold mb-4">
+            {isAmharic ? "ዋና ፕሮጀክት" : "Featured Project"}
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+            {isAmharic ? afderaProject.titleAm : afderaProject.title}
+          </h2>
+          <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+            <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Afar-Afdera Region, Ethiopia</span>
+            <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2024</span>
+            <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 12 months</span>
+          </div>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.
+          </p>
+          <div className="grid grid-cols-2 gap-3 mb-6">
+            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl font-bold text-orange-500">50+</div>
+              <div className="text-xs text-gray-500">KM of Fiber</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl font-bold text-orange-500">200+</div>
+              <div className="text-xs text-gray-500">Utility Poles</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl font-bold text-orange-500">5,000+</div>
+              <div className="text-xs text-gray-500">Households Served</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+              <div className="text-2xl font-bold text-green-500">75%</div>
+              <div className="text-xs text-gray-500">Power Outage Reduction</div>
+            </div>
+          </div>
+          <button 
+            onClick={() => setSelectedProject(afderaProject)}
+            className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all"
+          >
+            {isAmharic ? "ዝርዝር ይመልከቱ" : "View Details"} <ArrowRight className="ml-2 w-4 h-4" />
+          </button>
+        </div>
+        <div className="relative h-64 lg:h-auto">
+         <img 
+  src="https://i.pinimg.com/736x/c5/4d/fb/c54dfb5d1e1004f24c57d0d84594b9ba.jpg" 
+  alt="Afdera Utility Infrastructure Project - Fiber optic installation in Afar region"
+  className="w-full h-105 object-cover rounded-r-2xl"
+/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      {/* Project Details Modal */}
+      {selectedProject && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setSelectedProject(null)}>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+              <h2 className="text-xl font-bold text-gray-900">
+                {isAmharic ? selectedProject.titleAm : selectedProject.title}
               </h2>
-              <div className="flex items-center gap-4 text-sm text-gray-300 mb-4">
-                <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> Afar-Afdera Region</span>
-                <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> Completed 2024</span>
-              </div>
-              <p className="text-gray-200 mb-4 line-clamp-3">
-                Successfully deployed 50+ km of fiber optic network and 200+ utility poles in one of Ethiopia's most challenging environments.
-              </p>
-              <button
-                onClick={() => setSelectedProject(projectsData.find(p => p.id === 1))}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-safety-orange hover:bg-orange-700 rounded-lg transition-colors"
-              >
-                View Project <ArrowRight className="w-4 h-4" />
-              </button>
+              <button onClick={() => setSelectedProject(null)} className="p-2 hover:bg-gray-100 rounded-lg">✕</button>
             </div>
-            <div className="relative h-64 md:h-auto">
-              <img 
-                src="https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg"
-                alt="Afdera Project"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-linear-to-l from-primary-blue/50 to-transparent" />
-            </div>
-          </div>
-        </div>
 
-        {/* Projects Grid/List */}
-        {filteredProjects.length > 0 ? (
-          viewMode === 'grid' ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group"
-                  onClick={() => setSelectedProject(project)}
+            {/* Tabs */}
+            <div className="flex border-b px-4">
+              {['gallery', 'details', 'map'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`py-3 px-4 font-medium text-sm transition-colors border-b-2 ${
+                    activeTab === tab ? 'border-orange-500 text-orange-500' : 'border-transparent text-gray-500'
+                  }`}
                 >
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={project.images[0]?.url || "https://placehold.co/600x400/1B3A5C/white?text=Project+Image"}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <span className="bg-safety-orange text-white text-xs px-2 py-1 rounded">
-                        {project.category}
-                      </span>
-                    </div>
-                    <div className="absolute top-4 right-4 bg-black/50 p-2 rounded-full">
-                      <ZoomIn className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 line-clamp-1">
-                      {isAmharic && project.titleAm ? project.titleAm : project.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm mb-3">
-                      <MapPin className="w-4 h-4" />
-                      <span className="line-clamp-1">{project.location}</span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <button className="text-safety-orange font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                      View Details <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </motion.div>
+                  {tab === 'gallery' && (isAmharic ? "ምስሎች" : "Gallery")}
+                  {tab === 'details' && (isAmharic ? "ዝርዝሮች" : "Details")}
+                  {tab === 'map' && (isAmharic ? "ካርታ" : "Map")}
+                </button>
               ))}
             </div>
-          ) : (
-            <div className="space-y-4">
-              {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-48 h-48 md:h-auto">
-                      <img
-                        src={project.images[0]?.url || "https://placehold.co/200x200/1B3A5C/white?text=Project"}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1 p-6">
-                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-3">
-                        <span className="flex items-center gap-1"><MapPin className="w-3 h-3" /> {project.location}</span>
-                        <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {project.completed}</span>
-                        <span className="bg-safety-orange text-white px-2 py-0.5 rounded text-xs">{project.category}</span>
+
+            <div className="p-6">
+              {/* Gallery Tab */}
+              {activeTab === 'gallery' && (
+                <div>
+                  {/* Before & After Section */}
+                  {selectedProject.beforeAfter && (
+                    <div className="mb-8">
+                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <Activity className="w-5 h-5 text-orange-500" />
+                        {isAmharic ? "ከበፊት እና ከሆነ በኋላ" : "Before & After"}
+                      </h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="relative rounded-xl overflow-hidden shadow-md">
+                          <img src={selectedProject.beforeAfter.before.url} alt="Before" className="w-full h-64 object-cover" />
+                          <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 text-center text-sm">
+                            {isAmharic ? selectedProject.beforeAfter.before.captionAm : selectedProject.beforeAfter.before.caption}
+                          </div>
+                        </div>
+                        <div className="relative rounded-xl overflow-hidden shadow-md">
+                          <img src={selectedProject.beforeAfter.after.url} alt="After" className="w-full h-64 object-cover" />
+                          <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-2 text-center text-sm">
+                            {isAmharic ? selectedProject.beforeAfter.after.captionAm : selectedProject.beforeAfter.after.caption}
+                          </div>
+                        </div>
                       </div>
-                      <p className="text-gray-600 dark:text-gray-300 line-clamp-2">{project.description}</p>
                     </div>
+                  )}
+
+                  {/* Image Gallery */}
+                  {selectedProject.images && selectedProject.images.length > 0 && (
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                        <Camera className="w-5 h-5 text-orange-500" />
+                        {isAmharic ? "የፕሮጀክት ምስሎች" : "Project Images"}
+                      </h3>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {selectedProject.images.map((img, idx) => (
+                          <div key={img.id} className="relative group cursor-pointer rounded-xl overflow-hidden shadow-md hover:shadow-lg transition" onClick={() => openLightbox(selectedProject.images, idx)}>
+                            <img src={img.thumbnail || img.url} alt={img.caption} className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300" />
+                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <ZoomIn className="w-6 h-6 text-white" />
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-1 text-xs text-center truncate">
+                              {isAmharic ? img.captionAm : img.caption}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Details Tab */}
+              {activeTab === 'details' && (
+                <div className="space-y-5">
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-2">{isAmharic ? "ተግዳሮት" : "Challenge"}</h3>
+                    <p className="text-gray-600 text-sm">{selectedProject.challenge}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-2">{isAmharic ? "መፍትሄ" : "Solution"}</h3>
+                    <p className="text-gray-600 text-sm">{selectedProject.solution}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-2">{isAmharic ? "ውጤት" : "Result"}</h3>
+                    <p className="text-gray-600 text-sm">{selectedProject.result}</p>
+                  </div>
+                  {selectedProject.impact && (
+                    <div>
+                      <h3 className="font-semibold text-gray-800 mb-2">{isAmharic ? "ተጽእኖ" : "Impact"}</h3>
+                      <p className="text-gray-600 text-sm">{selectedProject.impact}</p>
+                    </div>
+                  )}
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-2">{isAmharic ? "ደንበኛ" : "Client"}</h3>
+                    <p className="text-gray-600 text-sm">{selectedProject.client}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          )
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500">No projects found matching your criteria.</p>
-          </div>
-        )}
+              )}
 
-        {/* Project Gallery Modal */}
-        {selectedProject && (
-          <ProjectGallery 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
-          />
-        )}
-      </div>
+              {/* Map Tab */}
+              {activeTab === 'map' && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                    <Map className="w-5 h-5 text-orange-500" />
+                    {isAmharic ? "የፕሮጀክት አካባቢ ካርታ" : "Project Location Map"}
+                  </h3>
+                  <div className="bg-gray-100 rounded-xl p-8 text-center">
+                    <MapPin className="w-12 h-12 text-orange-500 mx-auto mb-3" />
+                    <p className="text-gray-600 font-medium">{selectedProject.location}</p>
+                    <p className="text-sm text-gray-400 mt-1">Afar-Afdera Region, Ethiopia</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="p-6 border-t">
+              <Link to="/contact" className="block w-full text-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all">
+                {isAmharic ? "ለተመሳሳይ ፕሮጀክት ዋጋ ይጠይቁ" : "Request Quote for Similar Project"} <ArrowRight className="inline ml-1 w-4 h-4" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center" onClick={() => setSelectedImage(null)}>
+          <button onClick={() => setSelectedImage(null)} className="absolute top-4 right-4 text-white text-2xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30">✕</button>
+          <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 text-white text-3xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30">‹</button>
+          <img src={selectedImage.images[currentImageIndex].url} className="max-w-[90vw] max-h-[90vh] object-contain" alt="" />
+          <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 text-white text-3xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30">›</button>
+          <div className="absolute bottom-4 left-0 right-0 text-center text-white bg-black/50 py-2 mx-auto w-fit px-6 rounded-full">
+            {isAmharic ? selectedImage.images[currentImageIndex].captionAm : selectedImage.images[currentImageIndex].caption}
+          </div>
+        </div>
+      )}
+
+      {/* CTA Section - White Background */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+            {isAmharic ? "ተመሳሳይ ፕሮጀክት ማቀድ ይፈልጋሉ?" : "Planning a Similar Project?"}
+          </h2>
+          <p className="text-gray-500 mb-5 max-w-md mx-auto">
+            {isAmharic ? "በእርስዎ ፕሮጀክት ላይ እንዴት እንደምንረዳ ለመወያየት ቡድናችንን ያግኙ" : "Contact our team to discuss how we can help with your project"}
+          </p>
+          <Link to="/contact" className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all">
+            {isAmharic ? "ዋጋ ይጠይቁ" : "Request a Quote"} <ArrowRight className="ml-2 w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

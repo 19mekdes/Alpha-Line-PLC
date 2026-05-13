@@ -30,7 +30,6 @@ const HomePage = () => {
   const { t, i18n } = useTranslation();
   const isAmharic = i18n.language === "am";
 
-  // High-quality working images
   const slides = [
     {
       id: 1,
@@ -62,7 +61,6 @@ const HomePage = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // Preload images
   useEffect(() => {
     let loaded = 0;
     slides.forEach((slide) => {
@@ -100,32 +98,32 @@ const HomePage = () => {
   };
 
   const stats = [
-    { value: "50+", label: "Projects Completed", icon: Briefcase },
-    { value: "25+", label: "Expert Engineers", icon: Users },
-    { value: "10+", label: "Years Experience", icon: Clock },
-    { value: "98%", label: "Client Satisfaction", icon: TrendingUp },
+    { value: "50+", label: t('stats.projects'), icon: Briefcase },
+    { value: "25+", label: t('stats.engineers'), icon: Users },
+    { value: "10+", label: t('stats.experience'), icon: Clock },
+    { value: "98%", label: t('stats.satisfaction'), icon: TrendingUp },
   ];
 
   const services = [
     {
-      title: "Telecom Infrastructure",
+      title: t('services.telecom.title'),
       icon: <Wifi className="w-8 h-8" />,
-      desc: "Fiber optic installation, OSP design (HLD/LLD), and tower maintenance",
+      desc: t('services.telecom.description'),
     },
     {
-      title: "Power & Utilities",
+      title: t('services.power.title'),
       icon: <Zap className="w-8 h-8" />,
-      desc: "Utility pole installation, electrical power projects, and hardware supply",
+      desc: t('services.power.description'),
     },
     {
-      title: "Engineering Consultancy",
+      title: t('services.consultancy.title'),
       icon: <BarChart3 className="w-8 h-8" />,
-      desc: "Site surveys, AutoCAD documentation, and technical reporting",
+      desc: t('services.consultancy.description'),
     },
     {
-      title: "Project Management",
+      title: t('services.projectMgmt.title'),
       icon: <HardDrive className="w-8 h-8" />,
-      desc: "Excavation, trenching, and infrastructure deployment in challenging terrains",
+      desc: t('services.projectMgmt.description'),
     },
   ];
 
@@ -133,7 +131,7 @@ const HomePage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <div className="w-12 h-12 border-3 border-safety-orange border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-3 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-500">Loading...</p>
         </div>
       </div>
@@ -210,82 +208,96 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* TEXT SECTION - CLEAR READABLE BACKGROUND */}
+      {/* TEXT SECTION - WITH TRANSLATIONS */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Tagline - Orange background for contrast */}
-            <div className="inline-block px-4 py-2 bg-safety-orange text-white rounded-full text-sm font-semibold mb-6"></div>
+            {/* Tagline */}
+            <div className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-semibold mb-6">
+              {t('hero.tagline')}
+            </div>
 
-            {/* Main Title - Dark, bold */}
+            {/* Main Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Alpha Line Engineering PLC
+              {t('hero.title')}
             </h1>
 
-            {/* English Motto - Orange for emphasis */}
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-800 font-bold mb-3">
-              "Connecting the World, Powering the Future"
+            {/* English Motto */}
+            <p className="text-xl md:text-2xl lg:text-3xl text-orange-600 font-bold mb-3">
+              {t('hero.motto')}
             </p>
 
-            {/* Amharic Motto - Blue for contrast */}
-            <p className="text-lg md:text-xl text-gray-800 font-semibold mb-6">
-              "ዓለምን በማገናኘት፣ መጻኢውን በማብራት"
+            {/* Amharic Motto */}
+            <p className="text-lg md:text-xl text-gray-700 font-semibold mb-6">
+              {t('hero.mottoAmharic')}
             </p>
 
-            {/* Description - Gray on white, easy to read */}
-            <p className="text-base md:text-lg text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Grade-1 engineering firm specializing in{" "}
-              <span className="text-safety-orange font-semibold">
-                Outside Plant (OSP) engineering
-              </span>{" "}
-              and{" "}
-              <span className="text-safety-orange font-semibold">
-                electrical power projects
-              </span>{" "}
-              across Ethiopia, including the challenging Afar-Afdera region.
+            {/* Description */}
+            <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {t('hero.description')}
             </p>
-            {/* CTA Buttons - Using Default Tailwind Colors */}
+
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                Explore Our Services
+                {t('hero.cta1')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                Get a Quote
+                {t('hero.cta2')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-10 flex flex-wrap justify-center gap-6 pt-6 border-t border-gray-100">
+              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                <Shield className="w-4 h-4 text-orange-500" />
+                <span>Grade-1 Licensed</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                <Award className="w-4 h-4 text-orange-500" />
+                <span>ISO Certified</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                <Clock className="w-4 h-4 text-orange-500" />
+                <span>24/7 Support</span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-600 text-sm">
+                <Globe className="w-4 h-4 text-orange-500" />
+                <span>Nationwide Reach</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Core Services
+              {t('services.title')}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Comprehensive engineering solutions for telecom and power
-              infrastructure
+              {t('services.description')}
             </p>
-            <div className="w-20 h-1 bg-safety-orange mx-auto mt-4 rounded-full" />
+            <div className="w-20 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, idx) => (
               <div
                 key={idx}
-                className="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-lg transition-all"
+                className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-all"
               >
-                <div className="w-16 h-16 bg-safety-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-safety-orange">
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-gray-900">
@@ -297,23 +309,20 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* About Preview - Split Screen Layout */}
-      <section className="py-20 bg-gray-50">
+
+      {/* About Preview */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Text Content - Left Side */}
             <div className="text-center md:text-left">
-              <span className="inline-block px-4 py-1 bg-safety-orange/10 text-safety-orange rounded-full text-sm font-semibold mb-4">
-                About Us
+              <span className="inline-block px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
+                {t('about.subtitle')}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Ethiopia's Leading Engineering Firm
+                {t('about.title')}
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Alpha Line Engineering PLC is a premier Grade-1 engineering firm
-                headquartered in Addis Ababa, Ethiopia. We specialize in Outside
-                Plant (OSP) engineering, telecom infrastructure, and electrical
-                power projects.
+                {t('about.profileDesc')}
               </p>
               <div className="flex flex-wrap gap-4 mb-6 justify-center md:justify-start">
                 <div className="flex items-center gap-2">
@@ -327,14 +336,13 @@ const HomePage = () => {
               </div>
               <Link
                 to="/about"
-                className="inline-flex items-center px-6 py-3 bg-safety-orange hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
-                Learn More About Us
+                {t('about.team')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
 
-            {/* Image - Right Side */}
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
                 src="https://i.pinimg.com/736x/40/2d/92/402d92407070d25e650ff6254b0a982a.jpg"
@@ -346,18 +354,18 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA Section - White Background */}
-      <section className="py-20 bg-white">
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Your Infrastructure Project?
           </h2>
-          <p className="text-xl mb-8 text-gray-600">
+          <p className="text-xl mb-8 text-blue-100">
             Contact our team for a free consultation and quote
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+            className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
           >
             Request a Quote
             <ArrowRight className="ml-2 w-5 h-5" />
