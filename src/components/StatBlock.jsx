@@ -91,7 +91,6 @@ const StatBlock = ({
   );
 };
 
-// Export a pre-defined stats grid component
 export const StatsGrid = ({ stats = [], columns = 4 }) => {
   const columnClasses = {
     1: "grid-cols-1",

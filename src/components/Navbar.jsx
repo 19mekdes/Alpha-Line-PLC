@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Globe, Phone, Mail } from 'lucide-react';
-
-// Import local logo
-import logo from '/Logo.jpg';  // If logo is in public folder
+import logo from '/Logo.jpg';  
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
