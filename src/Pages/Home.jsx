@@ -251,13 +251,13 @@ const HomePage = () => {
                 {t('hero.cta1')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
-              >
-                {t('hero.cta2')}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
+              <a
+  href="tel:+25133708486"
+  className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+>
+  Request a Quote
+  <Phone className="ml-2 w-5 h-5" />
+</a>
             </div>
           </div>
         </div>
@@ -339,13 +339,13 @@ const HomePage = () => {
           <p className="text-xl mb-8 text-blue-100">
             Contact our team for a free consultation and quote
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
-          >
-            Request a Quote
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
+          <a
+  href="tel:+25133708486"
+  className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+>
+  Request a Quote
+  <Phone className="ml-2 w-5 h-5" />
+</a>
         </div>
       </section>
     </div>
