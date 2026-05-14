@@ -255,25 +255,7 @@ const HomePage = () => {
               </Link>
             </div>
 
-            {/* Trust Badges */}
-            <div className="mt-10 flex flex-wrap justify-center gap-6 pt-6 border-t border-gray-100">
-              <div className="flex items-center gap-2 text-gray-600 text-sm">
-                <Shield className="w-4 h-4 text-orange-500" />
-                <span>Grade-1 Licensed</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 text-sm">
-                <Award className="w-4 h-4 text-orange-500" />
-                <span>ISO Certified</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 text-sm">
-                <Clock className="w-4 h-4 text-orange-500" />
-                <span>24/7 Support</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 text-sm">
-                <Globe className="w-4 h-4 text-orange-500" />
-                <span>Nationwide Reach</span>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -324,16 +306,7 @@ const HomePage = () => {
               <p className="text-gray-600 mb-6 leading-relaxed">
                 {t('about.profileDesc')}
               </p>
-              <div className="flex flex-wrap gap-4 mb-6 justify-center md:justify-start">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">ISO Certified</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Grade-1 License</span>
-                </div>
-              </div>
+              
               <Link
                 to="/about"
                 className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-300"

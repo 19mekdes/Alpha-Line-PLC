@@ -44,7 +44,7 @@ const ServicesPage = () => {
       icon: <Wifi className="w-10 h-10" />,
       iconBg: "bg-blue-100 text-blue-600",
       image:
-        "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+        "https://i.pinimg.com/736x/0d/63/a4/0d63a4192b787c026faf34860f99be06.jpg",
       features: [
         "Fiber Optic Installation (Aerial & Underground)",
         "OSP Design (HLD/LLD) using AutoCAD & GIS",
@@ -81,7 +81,7 @@ const ServicesPage = () => {
       icon: <Zap className="w-10 h-10" />,
       iconBg: "bg-orange-100 text-orange-600",
       image:
-        "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+        "https://i.pinimg.com/1200x/02/28/38/02283884538fcfb566a7db60d2d010d8.jpg",
       features: [
         "Utility Pole Installation (Wood, Concrete, Steel)",
         "Stay Rods & Pole Hardware Supply",
@@ -117,7 +117,7 @@ const ServicesPage = () => {
       icon: <PenTool className="w-10 h-10" />,
       iconBg: "bg-green-100 text-green-600",
       image:
-        "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+        "https://i.pinimg.com/736x/c2/9b/74/c29b74924d035a5dafcbf55130f34cae.jpg",
       features: [
         "Topographic & Route Surveys",
         "AutoCAD Design & Documentation",
@@ -155,7 +155,7 @@ const ServicesPage = () => {
       icon: <HardDrive className="w-10 h-10" />,
       iconBg: "bg-purple-100 text-purple-600",
       image:
-        "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop",
+        "https://i.pinimg.com/1200x/0d/ec/bd/0decbd31360c91cc39239912c36b1aca.jpg",
       features: [
         "Excavation & Trenching Services",
         "Infrastructure Deployment",
@@ -222,7 +222,7 @@ const ServicesPage = () => {
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div
                     className={`absolute bottom-4 left-4 p-2 rounded-xl ${service.iconBg}`}
                   >

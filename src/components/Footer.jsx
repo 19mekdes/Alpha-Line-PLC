@@ -61,7 +61,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-3 text-orange-500">Contact</h4>
             <div className="space-y-1 text-sm text-gray-400">
               <div className="flex items-center justify-center md:justify-end gap-2">
-                <Phone className="w-3 h-3" /> <span>+251 11 123 4567</span>
+                <Phone className="w-3 h-3" /> <span>+251 3370 84 86</span>
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <Mail className="w-3 h-3" /> <span>info@alphalineengineering.com</span>
