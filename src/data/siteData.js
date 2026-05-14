@@ -1,11 +1,9 @@
-// siteData.js - All content data for Alpha Line PLC website
+// siteData.js - All content data for Alpha Line Engineering PLC
 
 import { 
-  Settings, 
-  Cpu, 
+  Wifi, 
   Zap, 
-   
-  Wrench, 
+  PenTool, 
   HardDrive,
   Factory,
   Users,
@@ -13,32 +11,33 @@ import {
   Clock,
   Briefcase,
   Award,
-  
   Globe,
- 
+  Shield,
+  Target,
+  Eye,
+  Handshake,
+  TrendingUp
 } from 'lucide-react';
 
 // Company Information
 export const companyInfo = {
-  name: "Alpha Line PLC",
-  fullName: "Alpha Line Private Limited Company",
-  tagline: "Engineering Excellence Since 1995",
-  description: "Leading engineering firm specializing in industrial automation, control systems, and engineering solutions for manufacturing and infrastructure sectors.",
-  founded: 1995,
-  employees: "50+",
+  name: "Alpha Line Engineering PLC",
+  fullName: "Alpha Line Engineering Private Limited Company",
+  tagline: "Engineering Excellence Since 2015",
+  description: "Leading engineering firm specializing in Outside Plant (OSP) engineering, telecom infrastructure, and electrical power projects across Ethiopia.",
+  founded: 2015,
+  employees: "25+",
   headquarters: "Addis Ababa, Ethiopia",
-  email: "info@alphaline.com",
+  email: "info@alphalineengineering.com",
   phone: "+251 11 123 4567",
   phoneAlt: "+251 91 123 4567",
-  fax: "+251 11 123 4568",
-  address: "123 Engineering Road, Industrial Area, Addis Ababa, Ethiopia",
-  website: "www.alphaline.com",
+  address: "Addis Ababa, Ethiopia",
+  website: "www.alphalineengineering.com",
   socialMedia: {
-    facebook: "https://facebook.com/alphalineplc",
-    twitter: "https://twitter.com/alphalineplc",
-    linkedin: "https://linkedin.com/company/alphalineplc",
-    instagram: "https://instagram.com/alphalineplc",
-    youtube: "https://youtube.com/alphalineplc"
+    facebook: "https://facebook.com/alphalineengineering",
+    twitter: "https://twitter.com/alphalineengineering",
+    linkedin: "https://linkedin.com/company/alphalineengineering",
+    instagram: "https://instagram.com/alphalineengineering"
   },
   workingHours: {
     weekdays: "8:00 AM - 6:00 PM",
@@ -51,184 +50,125 @@ export const companyInfo = {
 export const navLinks = [
   { path: "/", name: "Home", icon: "Home" },
   { path: "/about", name: "About", icon: "Info" },
-  { path: "/service", name: "Services", icon: "Settings" },
-  { path: "/testimonial", name: "Testimonials", icon: "MessageCircle" },
-  { path: "/contact", name: "Contact", icon: "Mail" }
+  { path: "/services", name: "Services", icon: "Settings" },
+  { path: "/projects", name: "Projects", icon: "Briefcase" },
+  { path: "/partners", name: "Partners", icon: "Handshake" }
 ];
 
 // Hero Section Content
 export const heroContent = {
-  title: "Alpha Line PLC",
-  subtitle: "Engineering Excellence Since 2026",
-  description: "Delivering innovative engineering solutions for industrial automation, control systems, and infrastructure development across Ethiopia and beyond.",
+  title: "Alpha Line Engineering PLC",
+  subtitle: "Engineering Excellence Since 2015",
+  description: "Leading engineering firm specializing in Outside Plant (OSP) engineering, telecom infrastructure, and electrical power projects across Ethiopia.",
   ctaText: "Explore Our Services",
-  ctaLink: "/service",
-  secondaryCta: "Contact Us",
+  ctaLink: "/services",
+  secondaryCta: "Request a Quote",
   secondaryCtaLink: "/contact",
-  backgroundImage: "https://i.pinimg.com/736x/76/d6/5c/76d65c3bb3c4950868f04322ddb96642.jpg"
+  backgroundImage: "/images/hero-bg.jpg"
 };
 
 // About Page Content
 export const aboutContent = {
-  title: "About Alpha Line PLC",
+  title: "About Alpha Line Engineering PLC",
   subtitle: "Your Trusted Engineering Partner",
-  description: "For over 2 years, Alpha Line PLC has been at the forefront of engineering innovation, providing cutting-edge industrial automation solutions to businesses across East Africa.",
-  mission: "To revolutionize industrial automation through innovative engineering solutions that enhance productivity, safety, and sustainability.",
-  vision: "To become the leading engineering solutions provider in Africa, recognized for excellence in automation and control systems.",
+  description: "For over 10 years, Alpha Line Engineering PLC has been at the forefront of engineering innovation, providing cutting-edge infrastructure solutions to businesses across Ethiopia.",
+  mission: "To deliver reliable, innovative infrastructure solutions that connect communities and power sustainable development across Ethiopia.",
+  vision: "To become East Africa's leading engineering firm, recognized for technical excellence and commitment to infrastructure development.",
   
-  aboutImage: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+  aboutImage: "/images/about-team.jpg",
   
   coreValues: [
     {
       icon: "Target",
-      title: "Excellence",
-      description: "Commitment to highest quality standards in every project"
+      title: "Reliability",
+      description: "We deliver on our promises with consistent, high-quality results"
     },
     {
-      icon: "Users",
+      icon: "Lightbulb",
       title: "Innovation",
-      description: "Continuous improvement and cutting-edge solutions"
+      description: "Embracing cutting-edge technology and creative solutions"
     },
     {
       icon: "Shield",
       title: "Integrity",
-      description: "Transparent and ethical business practices"
+      description: "Transparent and ethical business practices in all our dealings"
     },
     {
       icon: "Globe",
       title: "Sustainability",
-      description: "Environmentally responsible engineering solutions"
+      description: "Environmentally responsible engineering solutions for future generations"
     }
-  ],
-  
-  history: {
-    founded: 1995,
-    milestones: [
-      { year: 1995, event: "Company founded in Addis Ababa" },
-      { year: 2000, event: "Expanded to industrial automation services" },
-      { year: 2005, event: "ISO 9001:2000 Certification" },
-      { year: 2010, event: "Opened second branch in Adama" },
-      { year: 2015, event: "Launched SCADA systems division" },
-      { year: 2020, event: "Expanded to renewable energy sector" },
-      { year: 2024, event: "Opened innovation lab for Industry 4.0" }
-    ]
-  }
+  ]
 };
 
 // Services Data
 export const servicesData = [
   {
     id: 1,
-    title: "PLC Programming",
-    shortDesc: "Professional PLC programming for all major brands including Siemens, Allen-Bradley, and Schneider Electric.",
-    description: "Our expert team provides comprehensive PLC programming services for industrial automation systems. We work with all major PLC brands including Siemens (S7-1200, S7-1500), Allen-Bradley (ControlLogix, CompactLogix), Schneider Electric (Modicon), and Mitsubishi. Our services include ladder logic, structured text, function block diagrams, and sequential function charts.",
-    icon: "Settings",
-    iconComponent: Settings,
-    image: "https://images.unsplash.com/photo-1581092335871-5d3c5c6b4e8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Telecom Infrastructure",
+    shortDesc: "Fiber optic installation, OSP design (HLD/LLD), and tower maintenance",
+    description: "We provide end-to-end telecom infrastructure solutions ensuring reliable connectivity across Ethiopia. Our team specializes in fiber optic networks, communication tower maintenance, and OSP engineering.",
+    icon: "Wifi",
+    iconComponent: Wifi,
+    image: "/images/services/telecom.jpg",
     features: [
-      "All major PLC brands supported",
-      "Ladder logic and structured text programming",
-      "System integration and commissioning",
-      "Remote programming support",
-      "PLC upgrade and migration",
-      "24/7 emergency support"
-    ],
-    specifications: {
-      "Supported Brands": "Siemens, Allen-Bradley, Schneider, Mitsubishi",
-      "Programming Languages": "Ladder, STL, FBD, SFC",
-      "Response Time": "< 100ms",
-      "Warranty": "12 months"
-    }
+      "Fiber Optic Installation (Aerial & Underground)",
+      "OSP Design (HLD/LLD) using AutoCAD & GIS",
+      "Tower Maintenance & Inspection",
+      "Network Deployment & Integration",
+      "Site Acquisition & Permitting",
+      "Quality Testing & Commissioning"
+    ]
   },
   {
     id: 2,
-    title: "SCADA Systems",
-    shortDesc: "Advanced SCADA system design and implementation for real-time monitoring and control.",
-    description: "We design and implement cutting-edge SCADA (Supervisory Control and Data Acquisition) systems that provide real-time monitoring, data acquisition, and control capabilities for industrial processes. Our solutions include Wonderware, Ignition, WinCC, and Citect platforms.",
-    icon: "Cpu",
-    iconComponent: Cpu,
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Power & Utilities",
+    shortDesc: "Utility pole installation, electrical power projects, and hardware supply",
+    description: "We deliver reliable power infrastructure solutions bringing electricity to communities and industries. From utility pole installation to complete electrical system design.",
+    icon: "Zap",
+    iconComponent: Zap,
+    image: "/images/services/power.jpg",
     features: [
-      "Real-time process monitoring",
-      "Data logging and reporting",
-      "Alarm management systems",
-      "Remote access capabilities",
-      "Historical data analysis",
-      "Custom dashboard design"
-    ],
-    specifications: {
-      "Platforms": "Wonderware, Ignition, WinCC, Citect",
-      "Database": "SQL, Oracle, PostgreSQL",
-      "Connectivity": "OPC UA, Modbus, MQTT",
-      "Security": "SSL/TLS encryption"
-    }
+      "Utility Pole Installation (Wood, Concrete, Steel)",
+      "Stay Rods & Pole Hardware Supply",
+      "Electrical Power Projects (LV & MV)",
+      "Transformer Installation",
+      "Power Distribution Lines",
+      "Rural Electrification Projects"
+    ]
   },
   {
     id: 3,
-    title: "Industrial Automation",
-    shortDesc: "Complete industrial automation solutions from concept to commissioning.",
-    description: "We provide end-to-end industrial automation solutions including system design, panel building, installation, commissioning, and ongoing support. Our solutions optimize production processes, reduce downtime, and improve overall equipment effectiveness (OEE).",
-    icon: "Factory",
-    iconComponent: Factory,
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Engineering Consultancy",
+    shortDesc: "Site surveys, AutoCAD documentation, and technical reporting",
+    description: "Our consultancy services provide the technical foundation for successful infrastructure projects. We conduct detailed site surveys and create precise AutoCAD documentation.",
+    icon: "PenTool",
+    iconComponent: PenTool,
+    image: "/images/services/consultancy.jpg",
     features: [
-      "Complete system integration",
-      "Control panel design and manufacturing",
-      "Process optimization",
-      "Energy management systems",
-      "Predictive maintenance",
-      "Training and documentation"
+      "Topographic & Route Surveys",
+      "AutoCAD Design & Documentation",
+      "Technical Reporting & Analysis",
+      "Feasibility Studies",
+      "Environmental Impact Assessment",
+      "Project Cost Estimation"
     ]
   },
   {
     id: 4,
-    title: "Control Panel Design",
-    shortDesc: "Custom control panel design and manufacturing meeting international standards.",
-    description: "Our experienced engineers design and manufacture custom control panels for various industrial applications. All panels are designed according to IEC and NEC standards, ensuring safety, reliability, and ease of maintenance.",
-    icon: "Zap",
-    iconComponent: Zap,
-    image: "https://images.unsplash.com/photo-1581092335871-5d3c5c6b4e8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    features: [
-      "Custom panel design",
-      "UL/CE certified components",
-      "Thermal management",
-      "EMC compliant design",
-      "Remote I/O solutions",
-      "Turnkey installation"
-    ]
-  },
-  {
-    id: 5,
-    title: "Electrical Engineering",
-    shortDesc: "Comprehensive electrical engineering services for industrial facilities.",
-    description: "Our electrical engineering team provides a wide range of services including power distribution design, lighting systems, motor control centers, and electrical safety audits for industrial facilities.",
+    title: "Project Management",
+    shortDesc: "Excavation, trenching, and infrastructure deployment in challenging terrains",
+    description: "We specialize in managing complex infrastructure projects in Ethiopia's most challenging environments, including the Afar-Afdera region.",
     icon: "HardDrive",
     iconComponent: HardDrive,
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    image: "/images/services/project-management.jpg",
     features: [
-      "Power distribution design",
-      "Motor control centers",
-      "Electrical safety audits",
-      "Short circuit analysis",
-      "Load flow studies",
-      "Protection coordination"
-    ]
-  },
-  {
-    id: 6,
-    title: "Technical Support",
-    shortDesc: "24/7 technical support and maintenance services for industrial systems.",
-    description: "Our dedicated support team provides round-the-clock technical assistance, troubleshooting, and maintenance services to ensure your industrial systems operate at peak performance with minimal downtime.",
-    icon: "Wrench",
-    iconComponent: Wrench,
-    image: "https://images.unsplash.com/photo-1581092335871-5d3c5c6b4e8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    features: [
-      "24/7 emergency support",
-      "Preventive maintenance",
-      "Remote diagnostics",
-      "On-site repairs",
-      "Spare parts supply",
-      "Annual maintenance contracts"
+      "Excavation & Trenching Services",
+      "Infrastructure Deployment",
+      "Project Planning & Scheduling",
+      "Resource Management",
+      "Quality Control & Safety",
+      "Stakeholder Coordination"
     ]
   }
 ];
@@ -238,7 +178,7 @@ export const statisticsData = [
   {
     icon: "Briefcase",
     iconComponent: Briefcase,
-    value: 2,
+    value: 50,
     suffix: "+",
     label: "Projects Completed",
     color: "blue",
@@ -247,7 +187,7 @@ export const statisticsData = [
   {
     icon: "Users",
     iconComponent: Users,
-    value: 3,
+    value: 25,
     suffix: "+",
     label: "Expert Engineers",
     color: "green",
@@ -256,22 +196,88 @@ export const statisticsData = [
   {
     icon: "Trophy",
     iconComponent: Trophy,
-    value: 1,
+    value: 10,
     suffix: "+",
     label: "Years of Excellence",
     color: "orange",
     description: "Industry experience"
   },
-  
+  {
+    icon: "TrendingUp",
+    iconComponent: TrendingUp,
+    value: 98,
+    suffix: "%",
+    label: "Client Satisfaction",
+    color: "purple",
+    description: "Happy clients"
+  }
 ];
 
+// Projects Data
+export const projectsData = [
+  {
+    id: 1,
+    title: "Afdera Utility Infrastructure Project",
+    location: "Afar-Afdera Region, Ethiopia",
+    category: "Power & Utilities",
+    completed: "2024",
+    description: "Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.",
+    image: "/images/projects/afdera-main.jpg",
+    stats: {
+      fiberKm: "50+",
+      utilityPoles: "200+",
+      households: "5,000+"
+    }
+  },
+  {
+    id: 2,
+    title: "Addis Ababa Fiber Optic Network",
+    location: "Addis Ababa, Ethiopia",
+    category: "Telecom Infrastructure",
+    completed: "2023",
+    description: "Design and implementation of fiber optic network infrastructure across key districts of Addis Ababa.",
+    image: "/images/projects/addis-fiber.jpg",
+    stats: {
+      fiberKm: "80+",
+      districts: "5",
+      households: "100,000+"
+    }
+  }
+];
 
+// Partners Data
+export const partnersData = [
+  {
+    name: "Bahir Dar Institute of Technology",
+    category: "Strategic Partner",
+    year: "2018",
+    collaboration: ["Research & Development", "Student Internships", "Technical Workshops"]
+  },
+  {
+    name: "Alpha Line Engineering PLC",
+    category: "Parent Company",
+    year: "2015",
+    collaboration: ["Strategic Planning", "Resource Sharing", "Quality Control"]
+  },
+  {
+    name: "AGT Engineering",
+    category: "Technical Partner",
+    year: "2019",
+    collaboration: ["Infrastructure Projects", "Technical Consulting", "Quality Assurance"]
+  },
+  {
+    name: "Ethio Telecom",
+    category: "Government Partner",
+    year: "2020",
+    collaboration: ["Fiber Optic Networks", "Tower Installation", "Network Expansion"]
+  }
+];
 
 // Contact Page Content
 export const contactContent = {
   title: "Get In Touch",
-  subtitle: "We'd love to hear from you",
-  description: "Have a project in mind or need technical support? Contact our team of engineering experts today.",
+  subtitle: "Request a Quote",
+  description: "Contact our team for project inquiries and technical consultations",
   
   contactInfo: [
     {
@@ -298,21 +304,7 @@ export const contactContent = {
       details: `${companyInfo.workingHours.weekdays}\n${companyInfo.workingHours.saturday}`,
       link: null
     }
-  ],
-  
-  contactForm: {
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  },
-  
-  mapLocation: {
-    latitude: 9.0320,
-    longitude: 38.7468,
-    zoom: 15
-  }
+  ]
 };
 
 // Footer Links
@@ -320,73 +312,17 @@ export const footerLinks = {
   quickLinks: [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Our Services", path: "/service" },
-    { name: "Testimonials", path: "/testimonial" },
-    { name: "Contact", path: "/contact" },
-    { name: "Privacy Policy", path: "/privacy" },
-    { name: "Terms of Service", path: "/terms" }
+    { name: "Our Services", path: "/services" },
+    { name: "Projects", path: "/projects" },
+    { name: "Partners", path: "/partners" }
   ],
   
   services: [
-    "PLC Programming",
-    "SCADA Systems",
-    "Industrial Automation",
-    "Control Panel Design",
-    "Electrical Engineering",
-    "24/7 Technical Support"
-  ],
-  
-  newsletter: {
-    title: "Subscribe to Our Newsletter",
-    description: "Stay updated with our latest projects and industry news."
-  }
-};
-
-// SEO and Metadata
-export const seoData = {
-  home: {
-    title: "Alpha Line PLC - Engineering Excellence Since 1995",
-    description: "Leading engineering firm specializing in industrial automation, PLC programming, SCADA systems, and control solutions in Ethiopia.",
-    keywords: "engineering, industrial automation, PLC programming, SCADA, control systems, Ethiopia"
-  },
-  about: {
-    title: "About Alpha Line PLC - Our Story & Mission",
-    description: "Learn about Alpha Line PLC's 25+ years of engineering excellence, our mission, vision, and commitment to industrial automation.",
-    keywords: "about us, engineering company, mission, vision, history"
-  },
-  services: {
-    title: "Our Engineering Services - Industrial Automation Solutions",
-    description: "Comprehensive industrial automation services including PLC programming, SCADA systems, control panels, and 24/7 technical support.",
-    keywords: "engineering services, PLC programming, SCADA systems, industrial automation"
-  },
-  testimonials: {
-    title: "Client Testimonials - Success Stories",
-    description: "Read what our clients say about Alpha Line PLC's engineering solutions and services.",
-    keywords: "testimonials, client reviews, success stories"
-  },
-  contact: {
-    title: "Contact Alpha Line PLC - Get in Touch",
-    description: "Contact our engineering team for inquiries, support, or project consultations.",
-    keywords: "contact, support, inquiry, engineering consultation"
-  }
-};
-
-// Site Configuration
-export const siteConfig = {
-  siteName: "Alpha Line PLC",
-  siteUrl: "https://www.alphaline.com",
-  siteEmail: companyInfo.email,
-  sitePhone: companyInfo.phone,
-  address: companyInfo.address,
-  enableAnimations: true,
-  enableNewsletter: true,
-  enableCookieConsent: false,
-  theme: {
-    primaryColor: "#3B82F6",
-    secondaryColor: "#1E40AF",
-    accentColor: "#10B981",
-    fontFamily: "Inter, system-ui, sans-serif"
-  }
+    "Telecom Infrastructure",
+    "Power & Utilities",
+    "Engineering Consultancy",
+    "Project Management"
+  ]
 };
 
 // Export all data as default
@@ -397,9 +333,8 @@ export default {
   aboutContent,
   servicesData,
   statisticsData,
-  testimonialsData,
+  projectsData,
+  partnersData,
   contactContent,
-  footerLinks,
-  seoData,
-  siteConfig
+  footerLinks
 };

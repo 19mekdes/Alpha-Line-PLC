@@ -29,7 +29,7 @@ const Footer = () => {
               />
               <div>
                 <h3 className="font-bold text-lg">Alpha Line Engineering</h3>
-                <p className="text-xs text-gray-400">Grade-1 Engineering Firm</p>
+                <p className="text-xs text-gray-400"> Engineering Firm</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm mb-3">

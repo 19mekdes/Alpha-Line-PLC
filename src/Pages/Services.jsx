@@ -334,31 +334,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA Section - Orange Button */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              {isAmharic
-                ? "የምህንድስና መፍትሄ ይፈልጋሉ?"
-                : "Need a Custom Engineering Solution?"}
-            </h2>
-            <p className="text-gray-500 mb-6">
-              {isAmharic
-                ? "የፕሮጀክት ፍላጎቶችዎን ለመወያየት ቡድናችንን ያግኙ"
-                : "Contact our team to discuss your specific project requirements"}
-            </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-300"
-            >
-              {isAmharic ? "ዋጋ ይጠይቁ" : "Request a Quote"}{" "}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Service Modal */}
       {activeService && (
         <div

@@ -66,13 +66,13 @@ const AboutPage = () => {
   const teamMembers = [
     {
       name: "Eng. Henok Badige",
-      position: "Chief Executive Officer",
+      position: "General Manager",
       positionAm: "ዋና ሥራ አስፈፃሚ",
       specialty: "Infrastructure Engineering",
       specialtyAm: "መሠረተ ልማት ምህንድስና",
       experience: "4+ years",
       image: team1,
-      alt: "Eng. Henok Badige - CEO"
+      alt: "Eng. Henok Badige "
     },
     {
       name: "Eng. Melkamu",
@@ -95,15 +95,17 @@ const AboutPage = () => {
       alt: "Eng. yigzaw - Projects Manager"
     },
     {
-      name: "Eng. Marta Getachew",
-      position: "Lead Design Engineer",
-      positionAm: "ዋና ዲዛይን መሐንዲስ",
-      specialty: "AutoCAD & Documentation",
-      specialtyAm: "ኦቶካድ እና ሰነድ",
-      experience: "10+ years",
-      image: team4,
-      alt: "Eng. Marta Getachew - Lead Design Engineer"
-    }
+      
+  name: "Zenbu Badige",
+  position: "Lead Finance Officer",
+  positionAm: "ዋና ፋይናንስ ኃላፊ",
+  specialty: "Financial Management & Accounting",
+  specialtyAm: "የፋይናንስ አስተዳደር እና የሂሳብ አያያዝ",
+  experience: "1+ years",
+  image: team4,
+  alt: "Zenbu Badige - Lead Finance Officer"
+}
+    
   ];
 
   // Expertise areas
@@ -335,39 +337,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-linear-to-r from-blue-700 to-blue-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Work With Ethiopia's Leading Engineering Firm?
-            </h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-              Contact us to discuss your next infrastructure project
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contact"
-                className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-300"
-              >
-                Request a Quote
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <a
-                href="tel:+251111234567"
-                className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
-              >
-                <Phone className="mr-2 w-5 h-5" />
-                Call Us Now
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
     </div>
   );
 };

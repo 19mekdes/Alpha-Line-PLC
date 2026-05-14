@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+
 const resources = {
   en: {
     translation: {
@@ -16,7 +17,7 @@ const resources = {
         motto: "Connecting the World, Powering the Future",
         mottoAmharic: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         title: "Alpha Line Engineering PLC",
-        description: "Grade-1 engineering firm specializing in Outside Plant (OSP) engineering and electrical power projects across Ethiopia.",
+        description: "Leading engineering firm specializing in Outside Plant (OSP) engineering and electrical power projects across Ethiopia.",
         cta1: "Explore Our Services",
         cta2: "Request a Quote"
       },
@@ -24,7 +25,7 @@ const resources = {
         title: "About Alpha Line Engineering PLC",
         subtitle: "Who We Are",
         profile: "Company Profile",
-        profileDesc: "Alpha Line Engineering PLC is a premier Grade-1 engineering firm headquartered in Addis Ababa, Ethiopia. We specialize in Outside Plant (OSP) engineering, telecom infrastructure, and electrical power projects.",
+        profileDesc: "Alpha Line Engineering PLC is a premier engineering firm headquartered in Addis Ababa, Ethiopia. We specialize in Outside Plant (OSP) engineering, telecom infrastructure, and electrical power projects.",
         mission: "Our Mission",
         missionText: "To deliver reliable, innovative infrastructure solutions that connect communities and power sustainable development across Ethiopia.",
         vision: "Our Vision",
@@ -88,7 +89,7 @@ const resources = {
         contactInfo: "Contact Info",
         copyright: "All rights reserved.",
         address: "Addis Ababa, Ethiopia",
-        phone: "+251 11 123 4567",
+        phone: "+251 33 70 8486",
         email: "info@alphalineengineering.com",
         hours: "Mon-Fri: 8:00 AM - 6:00 PM"
       }
@@ -105,11 +106,11 @@ const resources = {
         quote: "ዋጋ ጠይቅ"
       },
       hero: {
-        tagline: "ከ2018 ጀምሮ የምህንድስና ልቀት",
+        tagline: "ከ2015 ጀምሮ የምህንድስና ልቀት",
         motto: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         mottoAmharic: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         title: "አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር",
-        description: "በኢትዮጵያ ውስጥ በውጭ እፅዋት (OSP) ኢንጂነሪንግ እና በኤሌክትሪክ ኃይል ፕሮጀክቶች ላይ የተካነ ደረጃ 1 የምህንድስና ድርጅት።",
+        description: "በኢትዮጵያ ውስጥ በውጭ እፅዋት (OSP) ኢንጂነሪንግ እና በኤሌክትሪክ ኃይል ፕሮጀክቶች ላይ የተካነ መሪ የምህንድስና ድርጅት።",
         cta1: "አገልግሎቶቻችንን ይመልከቱ",
         cta2: "ዋጋ ይጠይቁ"
       },
@@ -117,7 +118,7 @@ const resources = {
         title: "ስለ አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር",
         subtitle: "እኛ ማን ነን",
         profile: "የኩባንያ መገለጫ",
-        profileDesc: "አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር በአዲስ አበባ ፣ ኢትዮጵያ ውስጥ የሚገኝ ቀዳሚ ደረጃ 1 የምህንድስና ድርጅት ነው።",
+        profileDesc: "አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር በአዲስ አበባ ፣ ኢትዮጵያ ውስጥ የሚገኝ ቀዳሚ የምህንድስና ድርጅት ነው።",
         mission: "ተልዕኳችን",
         missionText: "ማህበረሰቦችን የሚያገናኙ እና በኢትዮጵያ ዘላቂ ልማትን የሚያጎለብቱ አስተማማኝ እና አዳዲስ የመሠረተ ልማት መፍትሄዎችን መስጠት።",
         vision: "ራዕያችን",
@@ -148,7 +149,7 @@ const resources = {
         subtitle: "የታመኑ ትብብሮች",
         description: "ከመሪ ተቋማት እና ድርጅቶች ጋር በመሆን መስራታችን ኩራት ይሰማናል",
         bahirDar: "ባህር ዳር የቴክኖሎጂ ተቋም",
-        alphaLine: "አልፋላይን ኢንጂነሪንግ ኃላፊነቱ የተወሰነ የግል ማህበር",
+        alphaLine: "አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር",
         agt: "ኤጂቲ ኢንጂነሪንግ",
         ethioTelecom: "ኢትዮ ቴሌኮም"
       },
@@ -160,7 +161,7 @@ const resources = {
         address: "አዲስ አበባ፣ ኢትዮጵያ",
         phone: "+251 33 70 8486 ",
         email: "info@alphalineengineering.com",
-        hours: "ሰኞ - አርብ፦ 2:00 ጠዋት - 12:00 ማታ"
+        hours: "ሰኞ - አርብ፦ 8:00 ጠዋት - 6:00 ማታ"
       }
     }
   }
