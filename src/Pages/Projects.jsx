@@ -151,7 +151,7 @@ const ProjectsPage = () => {
       {/* Featured Project - Afdera */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
+          <div className="bg-linear-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="p-8 lg:p-10">
                 <div className="inline-block px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-semibold mb-4">
@@ -341,7 +341,7 @@ const ProjectsPage = () => {
 
       {/* Lightbox */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center" onClick={() => setSelectedImage(null)}>
+        <div className="fixed inset-0 bg-black/95 z-60 flex items-center justify-center" onClick={() => setSelectedImage(null)}>
           <button onClick={() => setSelectedImage(null)} className="absolute top-4 right-4 text-white text-2xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30">✕</button>
           <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 text-white text-3xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30">‹</button>
           <img src={selectedImage.images[currentImageIndex].url} className="max-w-[90vw] max-h-[90vh] object-contain" alt="" />
