@@ -354,7 +354,7 @@ const AboutPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
              
               <a
-                href="tel:+25133708486"
+                href="tel:+251933708486"
                 className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 <Phone className="mr-2 w-5 h-5" />

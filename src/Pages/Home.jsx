@@ -252,7 +252,7 @@ const HomePage = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <a
-  href="tel:+25133708486"
+  href="tel:+251933708486"
   className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
 >
   Request a Quote
@@ -340,7 +340,7 @@ const HomePage = () => {
             Contact our team for a free consultation and quote
           </p>
           <a
-  href="tel:+25133708486"
+  href="tel:+251933708486"
   className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
 >
   Request a Quote

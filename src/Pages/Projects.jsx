@@ -490,7 +490,7 @@ const ProjectsPage = () => {
 
             <div className="p-6 border-t">
               <a
-                href="tel:+25133708486"
+                href="tel:+251933708486"
                 className="block w-full text-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all"
               >
                 <Phone className="inline mr-2 w-4 h-4" />
@@ -560,7 +560,7 @@ const ProjectsPage = () => {
               : "Contact our team to discuss how we can help with your project"}
           </p>
           <a
-            href="tel:+25133708486"
+            href="tel:+251933708486"
             className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all duration-300"
           >
             <Phone className="mr-2 w-4 h-4" />
