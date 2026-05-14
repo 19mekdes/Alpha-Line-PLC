@@ -26,33 +26,37 @@ import {
   Globe,
 } from "lucide-react";
 
+// Import local images
+import image1 from '/images/image1.jpg';
+import image5 from '/images/image5.jpg';
+import image3 from '/images/image3.jpg';
+import image4 from '/images/image4.jpg';
+import aboutImage from '/images/about-team.jpg';
+
 const HomePage = () => {
   const { t, i18n } = useTranslation();
   const isAmharic = i18n.language === "am";
 
+  // Local slides with imported images
   const slides = [
     {
       id: 1,
-      image:
-        "https://i.pinimg.com/736x/de/9b/33/de9b33bb9ce4bef56fb7849820fdda6f.jpg",
+      image: image1,
       title: "Fiber Optic Installation",
     },
     {
       id: 2,
-      image:
-        "https://i.pinimg.com/736x/e6/f9/c4/e6f9c41107815abca4dc9b14d2929694.jpg",
+      image: image5,
       title: "Utility Pole Installation",
     },
     {
       id: 3,
-      image:
-        "https://i.pinimg.com/736x/7a/27/18/7a271867c5639635e548a8c22b64f5ab.jpg",
+      image: image3,
       title: "OSP Engineering",
     },
     {
       id: 4,
-      image:
-        "https://i.pinimg.com/736x/9f/78/1b/9f781be44c17fc2ae349f27e5e5d7bc6.jpg",
+      image: image4,
       title: "Power Infrastructure",
     },
   ];
@@ -61,6 +65,7 @@ const HomePage = () => {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
+  // Preload images
   useEffect(() => {
     let loaded = 0;
     slides.forEach((slide) => {
@@ -254,8 +259,6 @@ const HomePage = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
-
-            
           </div>
         </div>
       </section>
@@ -292,7 +295,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* About Preview */}
+      {/* About Preview with Local Image */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -318,7 +321,7 @@ const HomePage = () => {
 
             <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="https://i.pinimg.com/736x/40/2d/92/402d92407070d25e650ff6254b0a982a.jpg"
+                src={aboutImage}
                 alt="Engineering Team"
                 className="w-full h-80 md:h-96 object-cover"
               />

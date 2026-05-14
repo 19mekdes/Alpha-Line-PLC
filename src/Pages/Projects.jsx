@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';  // ← ADD THIS IMPORT
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -8,6 +8,27 @@ import {
   Users, Award, TrendingUp, CheckCircle,
   Activity, Camera, ImageIcon, Map
 } from 'lucide-react';
+
+// Import all your local images from public/images folder
+const afderaMainImage = '/images/image5.jpg';  // Use your best Afdera project image
+const beforeImage = '/images/image6.jpg';       // Before image
+const afterImage = '/images/image7.jpg';        // After image
+
+// Gallery images for the project
+const galleryImages = [
+  { id: 1, url: '/images/image1.jpg', caption: "Fiber optic cable installation", captionAm: "የፋይበር ኦፕቲክ ገመድ መትከል" },
+  { id: 2, url: '/images/image2.jpg', caption: "Utility pole installation", captionAm: "የመገልገያ ምሰሶ መትከል" },
+  { id: 3, url: '/images/image3.jpg', caption: "Site survey and documentation", captionAm: "የቦታ ጥናት እና ሰነድ" },
+  { id: 4, url: '/images/image4.jpg', caption: "Equipment and hardware setup", captionAm: "የመሳሪያ እና ሃርድዌር መጫን" },
+  { id: 5, url: '/images/image5.jpg', caption: "Fiber optic cable installation", captionAm: "የፋይበር ኦፕቲክ ገመድ መትከል" },
+  { id: 6, url: '/images/image6.jpg', caption: "Utility pole installation team", captionAm: "የመገልገያ ምሰሶ መትከል ቡድን" },
+  { id: 7, url: '/images/image7.jpg', caption: "Site survey work", captionAm: "የቦታ ጥናት ስራ" },
+  { id: 8, url: '/images/image8.jpg', caption: "Equipment setup", captionAm: "የመሳሪያ መጫን" },
+  { id: 9, url: '/images/image9.jpg', caption: "Team at work", captionAm: "ቡድን በስራ ላይ" },
+  { id: 10, url: '/images/image10.jpg', caption: "Infrastructure deployment", captionAm: "የመሠረተ ልማት ማሰማራት" },
+  { id: 11, url: '/images/image11.jpg', caption: "Quality testing", captionAm: "የጥራት ሙከራ" },
+  { id: 12, url: '/images/image12.jpg', caption: "Project completion", captionAm: "የፕሮጀክት ማጠናቀቅ" },
+];
 
 const ProjectsPage = () => {
   const { t, i18n } = useTranslation();
@@ -34,52 +55,23 @@ const ProjectsPage = () => {
       result: "Successfully deployed 50+ km of fiber optic network and 200+ utility poles serving 5,000+ residents.",
       impact: "Reduced power outage by 75% and increased internet connectivity by 200% in the region.",
       client: "Ethiopian Electric Utility / Ethio Telecom",
-      images: [
-        {
-          id: 1,
-          url: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
-          thumbnail: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
-          caption: "Fiber optic cable installation in Afar region",
-          captionAm: "በአፋር ክልል የፋይበር ኦፕቲክ ገመድ መትከል",
-          type: "installation",
-          date: "March 2024"
-        },
-        {
-          id: 2,
-          url: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg",
-          thumbnail: "https://images.pexels.com/photos/261855/pexels-photo-261855.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
-          caption: "Utility pole installation team at work",
-          captionAm: "የመገልገያ ምሰሶ መትከል ቡድን በስራ ላይ",
-          type: "installation",
-          date: "April 2024"
-        },
-        {
-          id: 3,
-          url: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg",
-          thumbnail: "https://images.pexels.com/photos/3861964/engineer-working-on-site-3861964.jpg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
-          caption: "Site survey and documentation",
-          captionAm: "የቦታ ጥናት እና ሰነድ",
-          type: "survey",
-          date: "February 2024"
-        },
-        {
-          id: 4,
-          url: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg",
-          thumbnail: "https://images.pexels.com/photos/159298/gears-cogs-machining-technology-159298.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop",
-          caption: "Equipment and hardware setup",
-          captionAm: "የመሳሪያ እና ሃርድዌር መጫን",
-          type: "equipment",
-          date: "May 2024"
-        }
-      ],
+      images: galleryImages.map(img => ({
+        id: img.id,
+        url: img.url,
+        thumbnail: img.url,
+        caption: img.caption,
+        captionAm: img.captionAm,
+        type: "gallery",
+        date: "2024"
+      })),
       beforeAfter: {
         before: {
-          url: "https://images.pexels.com/photos/259915/pexels-photo-259915.jpeg",
+          url: beforeImage,
           caption: "Before: Undeveloped area with no infrastructure",
           captionAm: "ከበፊቱ: መሠረተ ልማት የሌለው አካባቢ"
         },
         after: {
-          url: "https://images.pexels.com/photos/3861969/engineer-working-on-fiber-optic-cable-3861969.jpg",
+          url: afterImage,
           caption: "After: New utility poles and fiber optic network installed",
           captionAm: "ከሆነ በኋላ: አዲስ የመገልገያ ምሰሶዎች እና የፋይበር ኦፕቲክ ኔትወርክ ተጭኗል"
         }
@@ -157,61 +149,62 @@ const ProjectsPage = () => {
       </section>
 
       {/* Featured Project - Afdera */}
-<section className="py-16 bg-white">
-  <div className="container mx-auto px-4">
-    <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
-      <div className="grid lg:grid-cols-2 gap-8">
-        <div className="p-8 lg:p-10">
-          <div className="inline-block px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-semibold mb-4">
-            {isAmharic ? "ዋና ፕሮጀክት" : "Featured Project"}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="bg-gradient-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="p-8 lg:p-10">
+                <div className="inline-block px-3 py-1 bg-orange-500 text-white rounded-full text-xs font-semibold mb-4">
+                  {isAmharic ? "ዋና ፕሮጀክት" : "Featured Project"}
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                  {isAmharic ? afderaProject.titleAm : afderaProject.title}
+                </h2>
+                <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                  <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Afar-Afdera Region, Ethiopia</span>
+                  <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2024</span>
+                  <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 12 months</span>
+                </div>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.
+                </p>
+                <div className="grid grid-cols-2 gap-3 mb-6">
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-orange-500">50+</div>
+                    <div className="text-xs text-gray-500">KM of Fiber</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-orange-500">200+</div>
+                    <div className="text-xs text-gray-500">Utility Poles</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-orange-500">5,000+</div>
+                    <div className="text-xs text-gray-500">Households Served</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-3 text-center shadow-sm">
+                    <div className="text-2xl font-bold text-green-500">75%</div>
+                    <div className="text-xs text-gray-500">Power Outage Reduction</div>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setSelectedProject(afderaProject)}
+                  className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all"
+                >
+                  {isAmharic ? "ዝርዝር ይመልከቱ" : "View Details"} <ArrowRight className="ml-2 w-4 h-4" />
+                </button>
+              </div>
+              <div className="relative h-64 lg:h-auto">
+                <img 
+                  src={afderaMainImage}
+                  alt="Afdera Utility Infrastructure Project"
+                  className="w-full h-full object-cover rounded-r-2xl"
+                />
+              </div>
+            </div>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            {isAmharic ? afderaProject.titleAm : afderaProject.title}
-          </h2>
-          <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-            <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Afar-Afdera Region, Ethiopia</span>
-            <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> 2024</span>
-            <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> 12 months</span>
-          </div>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.
-          </p>
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-orange-500">50+</div>
-              <div className="text-xs text-gray-500">KM of Fiber</div>
-            </div>
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-orange-500">200+</div>
-              <div className="text-xs text-gray-500">Utility Poles</div>
-            </div>
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-orange-500">5,000+</div>
-              <div className="text-xs text-gray-500">Households Served</div>
-            </div>
-            <div className="bg-white rounded-lg p-3 text-center shadow-sm">
-              <div className="text-2xl font-bold text-green-500">75%</div>
-              <div className="text-xs text-gray-500">Power Outage Reduction</div>
-            </div>
-          </div>
-          <button 
-            onClick={() => setSelectedProject(afderaProject)}
-            className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all"
-          >
-            {isAmharic ? "ዝርዝር ይመልከቱ" : "View Details"} <ArrowRight className="ml-2 w-4 h-4" />
-          </button>
         </div>
-        <div className="relative h-64 lg:h-auto">
-         <img 
-  src="https://i.pinimg.com/736x/c5/4d/fb/c54dfb5d1e1004f24c57d0d84594b9ba.jpg" 
-  alt="Afdera Utility Infrastructure Project - Fiber optic installation in Afar region"
-  className="w-full h-105 object-cover rounded-r-2xl"
-/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
+
       {/* Project Details Modal */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 overflow-y-auto" onClick={() => setSelectedProject(null)}>
@@ -222,7 +215,6 @@ const ProjectsPage = () => {
             className="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
             <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
               <h2 className="text-xl font-bold text-gray-900">
                 {isAmharic ? selectedProject.titleAm : selectedProject.title}
@@ -230,7 +222,6 @@ const ProjectsPage = () => {
               <button onClick={() => setSelectedProject(null)} className="p-2 hover:bg-gray-100 rounded-lg">✕</button>
             </div>
 
-            {/* Tabs */}
             <div className="flex border-b px-4">
               {['gallery', 'details', 'map'].map((tab) => (
                 <button
@@ -248,10 +239,8 @@ const ProjectsPage = () => {
             </div>
 
             <div className="p-6">
-              {/* Gallery Tab */}
               {activeTab === 'gallery' && (
                 <div>
-                  {/* Before & After Section */}
                   {selectedProject.beforeAfter && (
                     <div className="mb-8">
                       <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -275,7 +264,6 @@ const ProjectsPage = () => {
                     </div>
                   )}
 
-                  {/* Image Gallery */}
                   {selectedProject.images && selectedProject.images.length > 0 && (
                     <div>
                       <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -300,7 +288,6 @@ const ProjectsPage = () => {
                 </div>
               )}
 
-              {/* Details Tab */}
               {activeTab === 'details' && (
                 <div className="space-y-5">
                   <div>
@@ -328,7 +315,6 @@ const ProjectsPage = () => {
                 </div>
               )}
 
-              {/* Map Tab */}
               {activeTab === 'map' && (
                 <div>
                   <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -366,7 +352,7 @@ const ProjectsPage = () => {
         </div>
       )}
 
-      {/* CTA Section - White Background */}
+      {/* CTA Section */}
       <section className="py-16 bg-white border-t border-gray-100">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
