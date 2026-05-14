@@ -317,7 +317,7 @@ const ServicesPage = () => {
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
                 className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
               >
-                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center shrink-0">
                   <span className="text-orange-600 font-bold text-sm">
                     {step.step}
                   </span>

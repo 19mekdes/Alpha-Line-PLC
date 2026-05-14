@@ -120,7 +120,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-white">
       
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+      <section className="relative py-20 bg-linear-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -281,7 +281,7 @@ const AboutPage = () => {
                 className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all border border-gray-200"
               >
                 {/* Team Member Image */}
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-linear-to-br from-blue-600 to-blue-800">
                   <img 
                     src={member.image} 
                     alt={member.alt}
@@ -336,7 +336,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-700 to-blue-900 text-white">
+      <section className="py-16 bg-linear-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
