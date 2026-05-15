@@ -27,11 +27,11 @@ import {
 } from "lucide-react";
 
 // Import local images
-import image1 from '/images/image1.jpg';
-import image5 from '/images/image5.jpg';
-import image3 from '/images/image3.jpg';
-import image4 from '/images/image4.jpg';
-import aboutImage from '/images/about-team.jpg';
+import image1 from "/images/image1.jpg";
+import image5 from "/images/image5.jpg";
+import image3 from "/images/image3.jpg";
+import image4 from "/images/image4.jpg";
+import aboutImage from "/images/about-team.jpg";
 
 const HomePage = () => {
   const { t, i18n } = useTranslation();
@@ -103,32 +103,32 @@ const HomePage = () => {
   };
 
   const stats = [
-    { value: "50+", label: t('stats.projects'), icon: Briefcase },
-    { value: "25+", label: t('stats.engineers'), icon: Users },
-    { value: "10+", label: t('stats.experience'), icon: Clock },
-    { value: "98%", label: t('stats.satisfaction'), icon: TrendingUp },
+    { value: "50+", label: t("stats.projects"), icon: Briefcase },
+    { value: "25+", label: t("stats.engineers"), icon: Users },
+    { value: "10+", label: t("stats.experience"), icon: Clock },
+    { value: "98%", label: t("stats.satisfaction"), icon: TrendingUp },
   ];
 
   const services = [
     {
-      title: t('services.telecom.title'),
+      title: t("services.telecom.title"),
       icon: <Wifi className="w-8 h-8" />,
-      desc: t('services.telecom.description'),
+      desc: t("services.telecom.description"),
     },
     {
-      title: t('services.power.title'),
+      title: t("services.power.title"),
       icon: <Zap className="w-8 h-8" />,
-      desc: t('services.power.description'),
+      desc: t("services.power.description"),
     },
     {
-      title: t('services.consultancy.title'),
+      title: t("services.consultancy.title"),
       icon: <BarChart3 className="w-8 h-8" />,
-      desc: t('services.consultancy.description'),
+      desc: t("services.consultancy.description"),
     },
     {
-      title: t('services.projectMgmt.title'),
+      title: t("services.projectMgmt.title"),
       icon: <HardDrive className="w-8 h-8" />,
-      desc: t('services.projectMgmt.description'),
+      desc: t("services.projectMgmt.description"),
     },
   ];
 
@@ -219,27 +219,27 @@ const HomePage = () => {
           <div className="max-w-4xl mx-auto text-center">
             {/* Tagline */}
             <div className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-semibold mb-6">
-              {t('hero.tagline')}
+              {t("hero.tagline")}
             </div>
 
             {/* Main Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              {t('hero.title')}
+              {t("hero.title")}
             </h1>
 
             {/* English Motto */}
             <p className="text-xl md:text-2xl lg:text-3xl text-orange-600 font-bold mb-3">
-              {t('hero.motto')}
+              {t("hero.motto")}
             </p>
 
             {/* Amharic Motto */}
             <p className="text-lg md:text-xl text-gray-700 font-semibold mb-6">
-              {t('hero.mottoAmharic')}
+              {t("hero.mottoAmharic")}
             </p>
 
             {/* Description */}
             <p className="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              {t('hero.description')}
+              {t("hero.description")}
             </p>
 
             {/* CTA Buttons */}
@@ -248,16 +248,16 @@ const HomePage = () => {
                 to="/services"
                 className="inline-flex items-center justify-center px-8 py-4 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
               >
-                {t('hero.cta1')}
+                {t("hero.cta1")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <a
-  href="tel:+251933708486"
-  className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
->
-  Request a Quote
-  <Phone className="ml-2 w-5 h-5" />
-</a>
+                href="tel:+251933708486"
+                className="inline-flex items-center justify-center px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+              >
+                Request a Quote
+                <Phone className="ml-2 w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -268,10 +268,10 @@ const HomePage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {t('services.title')}
+              {t("services.title")}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {t('services.description')}
+              {t("services.description")}
             </p>
             <div className="w-20 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
           </div>
@@ -301,20 +301,20 @@ const HomePage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="text-center md:text-left">
               <span className="inline-block px-4 py-1 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
-                {t('about.subtitle')}
+                {t("about.subtitle")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {t('about.title')}
+                {t("about.title")}
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                {t('about.profileDesc')}
+                {t("about.profileDesc")}
               </p>
-              
+
               <Link
                 to="/about"
                 className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
-                {t('about.team')}
+                {t("about.team")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
@@ -340,12 +340,12 @@ const HomePage = () => {
             Contact our team for a free consultation and quote
           </p>
           <a
-  href="tel:+251933708486"
-  className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
->
-  Request a Quote
-  <Phone className="ml-2 w-5 h-5" />
-</a>
+            href="tel:+251933708486"
+            className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md"
+          >
+            Request a Quote
+            <Phone className="ml-2 w-5 h-5" />
+          </a>
         </div>
       </section>
     </div>

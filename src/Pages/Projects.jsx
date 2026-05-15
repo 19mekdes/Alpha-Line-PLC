@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 
 // Import all your local images from public/images folder
-const afderaMainImage = "/images/image5.jpg"; // Use your best Afdera project image
+const ShashamaneMainImage = "/images/image5.jpg"; // Use your best Shashamane project image
 const beforeImage = "/images/image6.jpg"; // Before image
 const afterImage = "/images/image7.jpg"; // After image
 
@@ -115,17 +115,17 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: 1,
-      title: "Afdera Utility Infrastructure Project",
-      titleAm: "አፋደራ የመገልገያ መሠረተ ልማት ፕሮጀክት",
-      location: "Afar-Afdera Region, Ethiopia",
-      locationAm: "አፋር-አፋደራ ክልል፣ ኢትዮጵያ",
+      title: "Shashamane Utility Infrastructure Project",
+      titleAm: "ሻሻማኔ የመገልገያ መሠረተ ልማት ፕሮጀክት",
+      location: "Shashamane-Oromia Region, Ethiopia",
+      locationAm: "ሻሻማኔ-ኦሮሚያ ክልል፣ ኢትዮጵያ",
       category: "Power & Utilities",
-      completed: "2024",
-      duration: "12 months",
+      completed: "2026",
+      duration: "6 months",
       description:
-        "Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Afar-Afdera region.",
+        "Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Shashamane-Oromia region.",
       descriptionAm:
-        "በአስቸጋሪው የአፋር-አፋደራ ክልል የምሰሶ መትከል፣ የፋይበር ኦፕቲክ ገመድ እና የኤሌክትሪክ ስርዓቶችን ጨምሮ ሙሉ የመገልገያ መሠረተ ልማት ማሰማራት።",
+        "በአስቸጋሪው የሻሻማኔ-ኦሮሚያ ክልል የምሰሶ መትከል፣ የፋይበር ኦፕቲክ ገመድ እና የኤሌክትሪክ ስርዓቶችን ጨምሮ ሙሉ የመገልገያ መሠረተ ልማት ማሰማራት።",
       challenge:
         "Extreme temperatures reaching 45°C+, remote location with limited access, difficult rocky terrain, and logistical challenges.",
       solution:
@@ -142,7 +142,7 @@ const ProjectsPage = () => {
         caption: img.caption,
         captionAm: img.captionAm,
         type: "gallery",
-        date: "2024",
+        date: "2026",
       })),
       beforeAfter: {
         before: {
@@ -169,8 +169,8 @@ const ProjectsPage = () => {
       titleAm: "አዲስ አበባ የፋይበር ኦፕቲክ ኔትወርክ",
       location: "Addis Ababa, Ethiopia",
       category: "Telecom Infrastructure",
-      completed: "2023",
-      duration: "18 months",
+      completed: "2026",
+      duration: "6 months",
       description:
         "Design and implementation of fiber optic network infrastructure across key districts of Addis Ababa.",
       images: [],
@@ -182,7 +182,7 @@ const ProjectsPage = () => {
     },
   ];
 
-  const afderaProject = projects[0];
+  const shashamaneProject = projects[0];
 
   const openLightbox = (images, index) => {
     setSelectedImage({ images, index });
@@ -230,7 +230,7 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* Featured Project - Afdera */}
+      {/* Featured Project - Shashamane */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="bg-linear-to-r from-orange-50 to-blue-50 rounded-2xl overflow-hidden shadow-lg">
@@ -240,23 +240,23 @@ const ProjectsPage = () => {
                   {isAmharic ? "ዋና ፕሮጀክት" : "Featured Project"}
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                  {isAmharic ? afderaProject.titleAm : afderaProject.title}
+                  {isAmharic ? shashamaneProject.titleAm : shashamaneProject.title}
                 </h2>
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <span className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" /> Afar-Afdera Region, Ethiopia
+                    <MapPin className="w-4 h-4" /> Shashamane-Oromia Region, Ethiopia
                   </span>
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" /> 2024
+                    <Calendar className="w-4 h-4" /> 2026
                   </span>
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" /> 12 months
+                    <Clock className="w-4 h-4" /> 3 months
                   </span>
                 </div>
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   Complete utility infrastructure deployment including pole
                   installation, fiber optic cabling, and electrical systems in
-                  the challenging Afar-Afdera region.
+                  the challenging Shashamane-Oromia region.
                 </p>
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   <div className="bg-white rounded-lg p-3 text-center shadow-sm">
@@ -287,7 +287,7 @@ const ProjectsPage = () => {
                   </div>
                 </div>
                 <button
-                  onClick={() => setSelectedProject(afderaProject)}
+                  onClick={() => setSelectedProject(shashamaneProject)}
                   className="inline-flex items-center px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-all"
                 >
                   {isAmharic ? "ዝርዝር ይመልከቱ" : "View Details"}{" "}
@@ -296,8 +296,8 @@ const ProjectsPage = () => {
               </div>
               <div className="relative h-64 lg:h-auto">
                 <img
-                  src={afderaMainImage}
-                  alt="Afdera Utility Infrastructure Project"
+                  src={ShashamaneMainImage}
+                  alt="Shashamane Utility Infrastructure Project"
                   className="w-full h-full object-cover rounded-r-2xl"
                 />
               </div>
@@ -481,7 +481,7 @@ const ProjectsPage = () => {
                       {selectedProject.location}
                     </p>
                     <p className="text-sm text-gray-400 mt-1">
-                      Afar-Afdera Region, Ethiopia
+                      Shashamane-Oromia Region, Ethiopia
                     </p>
                   </div>
                 </div>

@@ -13,7 +13,7 @@ const resources = {
         quote: "Get Quote"
       },
       hero: {
-        tagline: "Engineering Excellence Since 2015",
+        tagline: "Engineering Excellence Since 2018",
         motto: "Connecting the World, Powering the Future",
         mottoAmharic: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         title: "Alpha Line Engineering PLC",
@@ -54,8 +54,8 @@ const resources = {
         },
         projectMgmt: {
           title: "Project Management",
-          description: "Excavation, trenching, and infrastructure deployment in challenging terrains including the Afar-Afdera region.",
-          features: ["Excavation & Trenching", "Infrastructure Deployment", "Afar Region Experience", "Quality Assurance"]
+          description: "Excavation, trenching, and infrastructure deployment in challenging terrains including the Shashamane-Oromia region.",
+          features: ["Excavation & Trenching", "Infrastructure Deployment", "Shashamane-Oromia Region Experience", "Quality Assurance"]
         }
       },
       projects: {
@@ -64,13 +64,13 @@ const resources = {
         description: "Showcasing our expertise in challenging environments",
         viewDetails: "View Details",
         beforeAfter: "Before & After",
-        afdera: {
-          title: "Afdera Utility Infrastructure Project",
-          location: "Afar-Afdera Region, Ethiopia",
+        shashamane: {
+          title: "Shashamane Utility Infrastructure Project",
+          location: "Shashamane-Oromia Region, Ethiopia",
           challenge: "Extreme temperatures (45°C+), remote location, difficult accessibility, harsh terrain conditions",
           solution: "Specialized equipment deployment, local workforce training, phased implementation approach",
           result: "Successfully deployed 50+ km of fiber optic network and 200+ utility poles",
-          timeline: "12 months"
+          timeline: "3 months"
         }
       },
       partners: {
@@ -106,7 +106,7 @@ const resources = {
         quote: "ዋጋ ጠይቅ"
       },
       hero: {
-        tagline: "ከ2015 ጀምሮ የምህንድስና ልቀት",
+        tagline: "ከ2018 ጀምሮ የምህንድስና ልቀት",
         motto: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         mottoAmharic: "ዓለምን በማገናኘት፣ መጻኢውን በማብራት",
         title: "አልፋላይን ኢንጂነሪንግ ኃላ/የተ/የግ/ማህበር",
