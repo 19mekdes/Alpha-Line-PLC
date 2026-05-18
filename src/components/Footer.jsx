@@ -64,7 +64,7 @@ const Footer = () => {
                 <Phone className="w-3 h-3" /> <span>+251 3370 84 86</span>
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
-                <Mail className="w-3 h-3" /> <span>info@alphalineengineering.com</span>
+                <Mail className="w-3 h-3" /> <span>henokbdg12@gmail.com</span>
               </div>
               <div className="flex items-center justify-center md:justify-end gap-2">
                 <MapPin className="w-3 h-3" /> <span>Addis Ababa, Ethiopia</span>

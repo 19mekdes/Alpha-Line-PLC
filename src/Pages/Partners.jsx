@@ -531,7 +531,7 @@ const PartnersPage = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </button>
               <a
-                href="mailto:partners@alphalineengineering.com"
+                href="mailto:henokbdg12@gmail.com"
                 className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 <Mail className="mr-2 w-5 h-5" />
