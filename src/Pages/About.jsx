@@ -158,7 +158,7 @@ const AboutPage = () => {
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 With our main office strategically located in Addis Ababa, we serve clients across all regions of Ethiopia, 
-                including challenging terrains like the Afar-Afdera region.
+                including challenging terrains like the Shashemene-Oromia region.
               </p>
               
               <div className="flex flex-wrap gap-4 mb-6">
