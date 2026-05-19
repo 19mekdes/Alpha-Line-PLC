@@ -325,7 +325,6 @@ export const footerLinks = {
   ]
 };
 
-// Export all data as default
 export default {
   companyInfo,
   navLinks,
