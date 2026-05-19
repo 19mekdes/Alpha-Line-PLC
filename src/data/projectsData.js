@@ -116,5 +116,5 @@ export const projectsData = [
   }
 ];
 
-// Default export
+
 export default { projectsData, categories };
