@@ -26,15 +26,11 @@ import {
   Globe,
 } from "lucide-react";
 
-// Import local images
 import image1 from "/images/image1.jpg";
 import image5 from "/images/image5.jpg";
 import image3 from "/images/image3.jpg";
 import image4 from "/images/image4.jpg";
 import aboutImage from "/images/about-team.jpg";
-
-// Import mobile optimized images (create these or use same as desktop)
-// If you don't have mobile-specific images, we'll use the same images with better CSS
 
 const HomePage = () => {
   const { t, i18n } = useTranslation();
@@ -45,7 +41,7 @@ const HomePage = () => {
     {
       id: 1,
       image: image1,
-      mobileImage: image1, // Use same or add mobile-specific image
+      mobileImage: image1, 
       title: "Fiber Optic Installation",
     },
     {
