@@ -1,18 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-
-// Import i18n for multilingual support
-import './i18n';
-
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-
-import HomePage from './Pages/Home';
-import AboutPage from './Pages/About';
-import ServicesPage from './Pages/Services';
-import ProjectsPage from './Pages/Projects';
-import PartnersPage from './Pages/Partners';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import "./i18n";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./Pages/Home";
+import AboutPage from "./Pages/About";
+import ServicesPage from "./Pages/Services";
+import ProjectsPage from "./Pages/Projects";
+import PartnersPage from "./Pages/Partners";
 
 // Scroll to Top Component
 const ScrollToTop = () => {
@@ -21,7 +22,7 @@ const ScrollToTop = () => {
   React.useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }, [pathname]);
 
@@ -50,9 +51,11 @@ const NotFoundPage = () => {
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
           >
-            <div className="text-9xl font-bold text-safety-orange mb-4">404</div>
+            <div className="text-9xl font-bold text-safety-orange mb-4">
+              404
+            </div>
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -60,7 +63,7 @@ const NotFoundPage = () => {
           >
             Page Not Found
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -109,45 +112,45 @@ function App() {
         <main className="grow pt-16">
           <AnimatePresence mode="wait">
             <Routes>
-              <Route 
-                path="/" 
+              <Route
+                path="/"
                 element={
                   <PageTransition>
                     <HomePage />
                   </PageTransition>
-                } 
+                }
               />
-              <Route 
-                path="/about" 
+              <Route
+                path="/about"
                 element={
                   <PageTransition>
                     <AboutPage />
                   </PageTransition>
-                } 
+                }
               />
-              <Route 
-                path="/services" 
+              <Route
+                path="/services"
                 element={
                   <PageTransition>
                     <ServicesPage />
                   </PageTransition>
-                } 
+                }
               />
-              <Route 
-                path="/projects" 
+              <Route
+                path="/projects"
                 element={
                   <PageTransition>
                     <ProjectsPage />
                   </PageTransition>
-                } 
+                }
               />
-              <Route 
-                path="/partners" 
+              <Route
+                path="/partners"
                 element={
                   <PageTransition>
                     <PartnersPage />
                   </PageTransition>
-                } 
+                }
               />
               {/* 404 - Catch all unmatched routes */}
               <Route path="*" element={<NotFoundPage />} />
