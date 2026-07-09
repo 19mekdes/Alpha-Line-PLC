@@ -161,7 +161,7 @@ const resources = {
         address: "አዲስ አበባ፣ ኢትዮጵያ",
         phone: "+251 33 70 8486 ",
         email: "info@alphalineengineering.com",
-        hours: "ሰኞ - አርብ፦ 8:00 ጠዋት - 6:00 ማታ"
+        hours: "ሰኞ - አርብ፦ 2:00 ጠዋት - 12:00 ማታ"
       }
     }
   }
