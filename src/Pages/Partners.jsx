@@ -128,7 +128,7 @@ const PartnersPage = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would send the data to your backend
+
     console.log("Quote Request:", formData);
     setFormSubmitted(true);
     setTimeout(() => {
@@ -341,7 +341,6 @@ const PartnersPage = () => {
               )}
             </motion.div>
 
-            {/* Request for Quote Form Card */}
             {/* Request for Quote Form Card - Always Visible */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -363,7 +362,7 @@ const PartnersPage = () => {
                   : "Fill out the form to get a quick quote for your project"}
               </p>
 
-              {/* FORM ALWAYS VISIBLE - NO COLLAPSE */}
+              {/* FORM ALWAYS VISIBLE */}
               <form onSubmit={handleSubmit} className="mt-4 space-y-3">
                 {formSubmitted ? (
                   <div className="p-4 bg-green-100 text-green-700 rounded-lg text-center">
