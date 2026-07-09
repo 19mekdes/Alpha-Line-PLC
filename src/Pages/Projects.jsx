@@ -121,7 +121,7 @@ const ProjectsPage = () => {
       locationAm: "ሻሻማኔ-ኦሮሚያ ክልል፣ ኢትዮጵያ",
       category: "Power & Utilities",
       completed: "2026",
-      duration: "6 months",
+      duration: "3 months",
       description:
         "Complete utility infrastructure deployment including pole installation, fiber optic cabling, and electrical systems in the challenging Shashamane-Oromia region.",
       descriptionAm:
@@ -240,11 +240,14 @@ const ProjectsPage = () => {
                   {isAmharic ? "ዋና ፕሮጀክት" : "Featured Project"}
                 </div>
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                  {isAmharic ? shashamaneProject.titleAm : shashamaneProject.title}
+                  {isAmharic
+                    ? shashamaneProject.titleAm
+                    : shashamaneProject.title}
                 </h2>
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <span className="flex items-center gap-1">
-                    <MapPin className="w-4 h-4" /> Shashamane-Oromia Region, Ethiopia
+                    <MapPin className="w-4 h-4" /> Shashamane-Oromia Region,
+                    Ethiopia
                   </span>
                   <span className="flex items-center gap-1">
                     <Calendar className="w-4 h-4" /> 2026

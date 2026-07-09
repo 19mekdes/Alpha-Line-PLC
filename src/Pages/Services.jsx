@@ -334,7 +334,6 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      
       {/* Service Modal */}
       {activeService && (
         <div
