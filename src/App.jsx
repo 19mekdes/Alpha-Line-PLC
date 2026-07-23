@@ -152,7 +152,6 @@ function App() {
                   </PageTransition>
                 }
               />
-              {/* 404 - Catch all unmatched routes */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AnimatePresence>
