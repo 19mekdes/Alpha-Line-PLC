@@ -41,7 +41,7 @@ const HomePage = () => {
     {
       id: 1,
       image: image1,
-      mobileImage: image1, 
+      mobileImage: image1,
       title: "Fiber Optic Installation",
     },
     {
@@ -75,16 +75,19 @@ const HomePage = () => {
       setIsMobile(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Preload images
   useEffect(() => {
     let loaded = 0;
-    const imagesToLoad = slides.flatMap(slide => [slide.image, slide.mobileImage]);
+    const imagesToLoad = slides.flatMap((slide) => [
+      slide.image,
+      slide.mobileImage,
+    ]);
     const uniqueImages = [...new Set(imagesToLoad)];
-    
+
     uniqueImages.forEach((src) => {
       const img = new Image();
       img.src = src;
@@ -176,8 +179,8 @@ const HomePage = () => {
             {/* Responsive image with picture element */}
             <picture>
               {/* Mobile image (up to 768px) */}
-              <source 
-                media="(max-width: 768px)" 
+              <source
+                media="(max-width: 768px)"
                 srcSet={slides[currentSlide].mobileImage}
               />
               {/* Desktop image */}
@@ -185,7 +188,7 @@ const HomePage = () => {
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
                 className="w-full h-full object-cover object-center"
-                style={{ objectPosition: isMobile ? 'center 30%' : 'center' }}
+                style={{ objectPosition: isMobile ? "center 30%" : "center" }}
               />
             </picture>
             {/* Light overlay for better visibility on mobile */}
@@ -328,7 +331,9 @@ const HomePage = () => {
                 <h3 className="text-base md:text-xl font-bold mb-1 md:mb-2 text-gray-900">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-xs md:text-sm">{service.desc}</p>
+                <p className="text-gray-600 text-xs md:text-sm">
+                  {service.desc}
+                </p>
               </div>
             ))}
           </div>

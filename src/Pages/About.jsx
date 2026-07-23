@@ -1,33 +1,61 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import { 
-  Shield, Target, Eye, Users, Award, MapPin, 
-  Briefcase, CheckCircle, TrendingUp, Globe, 
-  Clock, Phone, Mail, Calendar, BookOpen, 
-  Lightbulb, Handshake, Rocket, Zap, BarChart3,
-  Wifi, HardDrive, Building2, ArrowRight
-} from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import {
+  Shield,
+  Target,
+  Eye,
+  Users,
+  Award,
+  MapPin,
+  Briefcase,
+  CheckCircle,
+  TrendingUp,
+  Globe,
+  Clock,
+  Phone,
+  Mail,
+  Calendar,
+  BookOpen,
+  Lightbulb,
+  Handshake,
+  Rocket,
+  Zap,
+  BarChart3,
+  Wifi,
+  HardDrive,
+  Building2,
+  ArrowRight,
+} from "lucide-react";
 
 // Import local team images
 // Place your team images in: public/images/team/
-import team1 from '/images/team1.jpg';
-import team2 from '/images/team2.jpg';
-import team3 from '/images/team3.jpg';
-import team4 from '/images/team4.jpg';
-
+import team1 from "/images/team1.jpg";
+import team2 from "/images/team2.jpg";
+import team3 from "/images/team3.jpg";
+import team4 from "/images/team4.jpg";
 
 const AboutPage = () => {
   const { t, i18n } = useTranslation();
-  const isAmharic = i18n.language === 'am';
+  const isAmharic = i18n.language === "am";
 
   // Company statistics
   const stats = [
-    { value: "2+", label: "Projects Completed", icon: Briefcase, color: "orange" },
+    {
+      value: "2+",
+      label: "Projects Completed",
+      icon: Briefcase,
+      color: "orange",
+    },
     { value: "3+", label: "Expert Engineers", icon: Users, color: "blue" },
     { value: "1+", label: "Years Experience", icon: Clock, color: "orange" },
-    { value: "98%", label: "Client Satisfaction", icon: TrendingUp, color: "blue" }
+    {
+      value: "98%",
+      label: "Client Satisfaction",
+      icon: TrendingUp,
+      color: "blue",
+    },
   ];
 
   // Core values
@@ -36,30 +64,31 @@ const AboutPage = () => {
       icon: <Shield className="w-8 h-8" />,
       title: "Reliability",
       titleAm: "አስተማማኝነት",
-      description: "We deliver on our promises with consistent, high-quality results.",
-      descriptionAm: "ቃል ኪዳናችንን በተከታታይ እና ከፍተኛ ጥራት ባለው ውጤት እንፈጽማለን።"
+      description:
+        "We deliver on our promises with consistent, high-quality results.",
+      descriptionAm: "ቃል ኪዳናችንን በተከታታይ እና ከፍተኛ ጥራት ባለው ውጤት እንፈጽማለን።",
     },
     {
       icon: <Lightbulb className="w-8 h-8" />,
       title: "Innovation",
       titleAm: "ፈጠራ",
       description: "Embracing cutting-edge technology and creative solutions.",
-      descriptionAm: "ዘመናዊ ቴክኖሎጂ እና የፈጠራ መፍትሄዎችን እንጠቀማለን።"
+      descriptionAm: "ዘመናዊ ቴክኖሎጂ እና የፈጠራ መፍትሄዎችን እንጠቀማለን።",
     },
     {
       icon: <Handshake className="w-8 h-8" />,
       title: "Integrity",
       titleAm: "ታማኝነት",
       description: "Transparent, ethical practices in all our dealings.",
-      descriptionAm: "በሁሉም ግንኙነቶቻችን ውስጥ ግልጽ እና ስነምግባር ያለው አሰራር።"
+      descriptionAm: "በሁሉም ግንኙነቶቻችን ውስጥ ግልጽ እና ስነምግባር ያለው አሰራር።",
     },
     {
       icon: <Rocket className="w-8 h-8" />,
       title: "Excellence",
       titleAm: "ልቀት",
       description: "Striving for the highest standards in every project.",
-      descriptionAm: "በእያንዳንዱ ፕሮጀክት ውስጥ ከፍተኛውን ደረጃ ለማሳካት መጣር።"
-    }
+      descriptionAm: "በእያንዳንዱ ፕሮጀክት ውስጥ ከፍተኛውን ደረጃ ለማሳካት መጣር።",
+    },
   ];
 
   // Team members with LOCAL IMAGES
@@ -72,7 +101,7 @@ const AboutPage = () => {
       specialtyAm: "መሠረተ ልማት ምህንድስና",
       experience: "4+ years",
       image: team1,
-      alt: "Eng. Henok Badige "
+      alt: "Eng. Henok Badige ",
     },
     {
       name: "Eng. Melkamu",
@@ -82,7 +111,7 @@ const AboutPage = () => {
       specialtyAm: "ቴሌኮም እና ኦኤስፒ",
       experience: "3+years",
       image: team2,
-      alt: "Eng. Melkamu - Technical Director"
+      alt: "Eng. Melkamu - Technical Director",
     },
     {
       name: "Eng. yigzaw",
@@ -92,35 +121,56 @@ const AboutPage = () => {
       specialtyAm: "ሃይል እና መገልገያዎች",
       experience: "2+ years",
       image: team3,
-      alt: "Eng. yigzaw - Projects Manager"
+      alt: "Eng. yigzaw - Projects Manager",
     },
     {
-      
-  name: "Zenbu Badige",
-  position: "Lead Finance Officer",
-  positionAm: "ዋና ፋይናንስ ኃላፊ",
-  specialty: "Financial Management & Accounting",
-  specialtyAm: "የፋይናንስ አስተዳደር እና የሂሳብ አያያዝ",
-  experience: "1+ years",
-  image: team4,
-  alt: "Zenbu Badige - Lead Finance Officer"
-}
-    
+      name: "Zenbu Badige",
+      position: "Lead Finance Officer",
+      positionAm: "ዋና ፋይናንስ ኃላፊ",
+      specialty: "Financial Management & Accounting",
+      specialtyAm: "የፋይናንስ አስተዳደር እና የሂሳብ አያያዝ",
+      experience: "1+ years",
+      image: team4,
+      alt: "Zenbu Badige - Lead Finance Officer",
+    },
   ];
 
   // Expertise areas
   const expertiseAreas = [
-    { name: "OSP Engineering", nameAm: "ኦኤስፒ ምህንድስና", icon: <Globe className="w-5 h-5" /> },
-    { name: "Fiber Optic Installation", nameAm: "የፋይበር ኦፕቲክ መትከል", icon: <Wifi className="w-5 h-5" /> },
-    { name: "Utility Pole Installation", nameAm: "የመገልገያ ምሰሶ መትከል", icon: <Zap className="w-5 h-5" /> },
-    { name: "Power Distribution", nameAm: "የኤሌክትሪክ ማከፋፈያ", icon: <Zap className="w-5 h-5" /> },
-    { name: "Site Survey & Design", nameAm: "የቦታ ጥናት እና ዲዛይን", icon: <MapPin className="w-5 h-5" /> },
-    { name: "Project Management", nameAm: "የፕሮጀክት አስተዳደር", icon: <Briefcase className="w-5 h-5" /> }
+    {
+      name: "OSP Engineering",
+      nameAm: "ኦኤስፒ ምህንድስና",
+      icon: <Globe className="w-5 h-5" />,
+    },
+    {
+      name: "Fiber Optic Installation",
+      nameAm: "የፋይበር ኦፕቲክ መትከል",
+      icon: <Wifi className="w-5 h-5" />,
+    },
+    {
+      name: "Utility Pole Installation",
+      nameAm: "የመገልገያ ምሰሶ መትከል",
+      icon: <Zap className="w-5 h-5" />,
+    },
+    {
+      name: "Power Distribution",
+      nameAm: "የኤሌክትሪክ ማከፋፈያ",
+      icon: <Zap className="w-5 h-5" />,
+    },
+    {
+      name: "Site Survey & Design",
+      nameAm: "የቦታ ጥናት እና ዲዛይን",
+      icon: <MapPin className="w-5 h-5" />,
+    },
+    {
+      name: "Project Management",
+      nameAm: "የፕሮጀክት አስተዳደር",
+      icon: <Briefcase className="w-5 h-5" />,
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      
       {/* Hero Section */}
       <section className="relative py-20 bg-linear-to-r from-blue-700 to-blue-900 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -129,12 +179,11 @@ const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              {t('about.title')}
+              {t("about.title")}
             </h1>
             <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
-              {t('about.profileDesc')}
+              {t("about.profileDesc")}
             </p>
           </motion.div>
         </div>
@@ -149,18 +198,18 @@ const AboutPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Ethiopia's Leading Engineering Firm
               </h2>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                {t('about.profileDesc')}
+                {t("about.profileDesc")}
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                With our main office strategically located in Addis Ababa, we serve clients across all regions of Ethiopia, 
-                including challenging terrains like the Shashemene-Oromia region.
+                With our main office strategically located in Addis Ababa, we
+                serve clients across all regions of Ethiopia, including
+                challenging terrains like the Shashemene-Oromia region.
               </p>
-              
+
               <div className="flex flex-wrap gap-4 mb-6">
                 <div className="flex items-center gap-2">
                   <MapPin className="w-5 h-5 text-orange-500" />
@@ -171,8 +220,6 @@ const AboutPage = () => {
                   <span className="text-gray-700">Est. 2018</span>
                 </div>
               </div>
-
-              
             </motion.div>
 
             <motion.div
@@ -182,9 +229,16 @@ const AboutPage = () => {
             >
               <div className="grid grid-cols-2 gap-4">
                 {stats.map((stat, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-md transition-shadow">
-                    <stat.icon className={`w-10 h-10 mx-auto mb-3 text-${stat.color}-500`} />
-                    <div className="text-2xl md:text-3xl font-bold text-gray-900">{stat.value}</div>
+                  <div
+                    key={idx}
+                    className="bg-gray-50 rounded-2xl p-6 text-center hover:shadow-md transition-shadow"
+                  >
+                    <stat.icon
+                      className={`w-10 h-10 mx-auto mb-3 text-${stat.color}-500`}
+                    />
+                    <div className="text-2xl md:text-3xl font-bold text-gray-900">
+                      {stat.value}
+                    </div>
                     <div className="text-sm text-gray-500">{stat.label}</div>
                   </div>
                 ))}
@@ -207,9 +261,11 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-4">
                 <Target className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">{t('about.mission')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                {t("about.mission")}
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {t('about.missionText')}
+                {t("about.missionText")}
               </p>
             </motion.div>
 
@@ -222,9 +278,11 @@ const AboutPage = () => {
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
                 <Eye className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">{t('about.vision')}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                {t("about.vision")}
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {t('about.visionText')}
+                {t("about.visionText")}
               </p>
             </motion.div>
           </div>
@@ -235,8 +293,12 @@ const AboutPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">The principles that guide our work and relationships</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Core Values
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              The principles that guide our work and relationships
+            </p>
             <div className="w-20 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
           </div>
 
@@ -256,7 +318,9 @@ const AboutPage = () => {
                   {isAmharic && value.titleAm ? value.titleAm : value.title}
                 </h3>
                 <p className="text-gray-600 text-sm">
-                  {isAmharic && value.descriptionAm ? value.descriptionAm : value.description}
+                  {isAmharic && value.descriptionAm
+                    ? value.descriptionAm
+                    : value.description}
                 </p>
               </motion.div>
             ))}
@@ -268,8 +332,12 @@ const AboutPage = () => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t('about.team')}</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">{t('about.teamDesc')}</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {t("about.team")}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t("about.teamDesc")}
+            </p>
             <div className="w-20 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
           </div>
 
@@ -284,26 +352,35 @@ const AboutPage = () => {
               >
                 {/* Team Member Image */}
                 <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-linear-to-br from-blue-600 to-blue-800">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.alt}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<div class="w-full h-full flex items-center justify-center"><Users class="w-10 h-10 text-white" /></div>';
+                      e.target.style.display = "none";
+                      e.target.parentElement.innerHTML =
+                        '<div class="w-full h-full flex items-center justify-center"><Users class="w-10 h-10 text-white" /></div>';
                     }}
                   />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900">
+                  {member.name}
+                </h3>
                 <p className="text-orange-600 text-sm font-medium mb-2">
-                  {isAmharic && member.positionAm ? member.positionAm : member.position}
+                  {isAmharic && member.positionAm
+                    ? member.positionAm
+                    : member.position}
                 </p>
                 <p className="text-gray-500 text-xs">
-                  {isAmharic && member.specialtyAm ? member.specialtyAm : member.specialty}
+                  {isAmharic && member.specialtyAm
+                    ? member.specialtyAm
+                    : member.specialty}
                 </p>
                 <div className="mt-3 pt-3 border-t border-gray-100">
-                  <span className="text-xs text-gray-400">{member.experience}</span>
+                  <span className="text-xs text-gray-400">
+                    {member.experience}
+                  </span>
                 </div>
               </motion.div>
             ))}
@@ -315,8 +392,12 @@ const AboutPage = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas of Expertise</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Technical capabilities that set us apart</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Areas of Expertise
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Technical capabilities that set us apart
+            </p>
             <div className="w-20 h-1 bg-orange-500 mx-auto mt-4 rounded-full" />
           </div>
 
@@ -352,7 +433,6 @@ const AboutPage = () => {
               Contact us to discuss your next infrastructure project
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             
               <a
                 href="tel:+251933708486"
                 className="inline-flex items-center px-6 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-blue-700 text-white font-semibold rounded-lg transition-all duration-300"
