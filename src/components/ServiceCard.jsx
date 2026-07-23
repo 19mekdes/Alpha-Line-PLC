@@ -1,17 +1,17 @@
-import  { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Wrench, ArrowRight, CheckCircle, X} from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Wrench, ArrowRight, CheckCircle, X } from "lucide-react";
 
-const ServiceCard = ({ 
-  title, 
-  description, 
+const ServiceCard = ({
+  title,
+  description,
   longDescription,
   icon: Icon = Wrench,
   image,
   features = [],
   specifications = {},
   delay = 0,
-  onLearnMore
+  onLearnMore,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -38,8 +38,8 @@ const ServiceCard = ({
         {/* Image Section */}
         {image && (
           <div className="relative h-48 overflow-hidden">
-            <img 
-              src={image} 
+            <img
+              src={image}
               alt={title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -55,7 +55,11 @@ const ServiceCard = ({
         {/* Content Section */}
         <div className="p-6">
           {/* Icon */}
-          <div className={`mb-4 transition-all duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}>
+          <div
+            className={`mb-4 transition-all duration-300 ${
+              isHovered ? "scale-110" : "scale-100"
+            }`}
+          >
             <div className="w-14 h-14 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
               <Icon className="w-7 h-7" />
             </div>
@@ -67,21 +71,24 @@ const ServiceCard = ({
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 mb-4 line-clamp-3">
-            {description}
-          </p>
+          <p className="text-gray-600 mb-4 line-clamp-3">{description}</p>
 
           {/* Features List */}
           {features.length > 0 && (
             <div className="mb-4 space-y-2">
               {features.slice(0, 2).map((feature, idx) => (
-                <div key={idx} className="flex items-center text-sm text-gray-600">
+                <div
+                  key={idx}
+                  className="flex items-center text-sm text-gray-600"
+                >
                   <CheckCircle className="w-4 h-4 text-green-500 mr-2 shrink-0" />
                   <span>{feature}</span>
                 </div>
               ))}
               {features.length > 2 && (
-                <p className="text-xs text-blue-600 mt-1">+{features.length - 2} more features</p>
+                <p className="text-xs text-blue-600 mt-1">
+                  +{features.length - 2} more features
+                </p>
               )}
             </div>
           )}
@@ -92,12 +99,20 @@ const ServiceCard = ({
             className="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors duration-300"
           >
             <span>Learn More</span>
-            <ArrowRight className={`w-4 h-4 ml-2 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
+            <ArrowRight
+              className={`w-4 h-4 ml-2 transition-transform duration-300 ${
+                isHovered ? "translate-x-1" : ""
+              }`}
+            />
           </button>
         </div>
 
         {/* Hover Border Effect */}
-        <div className={`absolute inset-0 border-2 border-blue-500 rounded-2xl transition-all duration-300 pointer-events-none ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+        <div
+          className={`absolute inset-0 border-2 border-blue-500 rounded-2xl transition-all duration-300 pointer-events-none ${
+            isHovered ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </motion.div>
 
       {/* Modal for View Details */}
@@ -118,7 +133,10 @@ const ServiceCard = ({
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="relative h-48 bg-cover bg-center" style={{ backgroundImage: image ? `url(${image})` : 'none' }}>
+              <div
+                className="relative h-48 bg-cover bg-center"
+                style={{ backgroundImage: image ? `url(${image})` : "none" }}
+              >
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
                 <button
                   onClick={() => setShowModal(false)}
@@ -138,15 +156,22 @@ const ServiceCard = ({
 
               {/* Modal Content */}
               <div className="p-6">
-                <p className="text-gray-700 mb-6">{longDescription || description}</p>
+                <p className="text-gray-700 mb-6">
+                  {longDescription || description}
+                </p>
 
                 {/* Features */}
                 {features.length > 0 && (
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-3">Key Features:</h4>
+                    <h4 className="text-lg font-semibold mb-3">
+                      Key Features:
+                    </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-gray-600">
+                        <li
+                          key={idx}
+                          className="flex items-center text-gray-600"
+                        >
                           <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
                           <span>{feature}</span>
                         </li>
@@ -158,11 +183,15 @@ const ServiceCard = ({
                 {/* Specifications */}
                 {Object.keys(specifications).length > 0 && (
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-3">Specifications:</h4>
+                    <h4 className="text-lg font-semibold mb-3">
+                      Specifications:
+                    </h4>
                     <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                       {Object.entries(specifications).map(([key, value]) => (
                         <div key={key} className="flex justify-between text-sm">
-                          <span className="font-medium text-gray-600">{key}:</span>
+                          <span className="font-medium text-gray-600">
+                            {key}:
+                          </span>
                           <span className="text-gray-800">{value}</span>
                         </div>
                       ))}
@@ -179,7 +208,7 @@ const ServiceCard = ({
                     Close
                   </button>
                   <button
-                    onClick={() => window.location.href = '/contact'}
+                    onClick={() => (window.location.href = "/contact")}
                     className="flex-1 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Request Quote
