@@ -55,10 +55,10 @@ const useScrolled = (threshold = 50) => {
   }, [threshold, lastScrollY]);
 
   return {
-    scrolled,        // boolean - true if scrolled past threshold
-    scrolledUp: scrollDirection === 'up',     // boolean - true if scrolling up
-    scrolledDown: scrollDirection === 'down', // boolean - true if scrolling down
-    scrollY,         // number - current scroll position in pixels
+    scrolled,       
+    scrolledUp: scrollDirection === 'up',     
+    scrolledDown: scrollDirection === 'down', 
+    scrollY,         
     scrollDirection, // string - 'up' or 'down'
     isAtTop,         // boolean - true if at top of page
     isAtBottom       // boolean - true if at bottom of page
