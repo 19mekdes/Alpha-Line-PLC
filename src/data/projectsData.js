@@ -1,4 +1,3 @@
-// Export categories separately
 export const categories = [
   { id: "all", name: "All Projects", nameAm: "ሁሉም ፕሮጀክቶች" },
   { id: "Telecom Infrastructure", name: "Telecom Infrastructure", nameAm: "ቴሌኮም መሠረተ ልማት" },
