@@ -59,9 +59,9 @@ const useScrolled = (threshold = 50) => {
     scrolledUp: scrollDirection === 'up',     
     scrolledDown: scrollDirection === 'down', 
     scrollY,         
-    scrollDirection, // string - 'up' or 'down'
-    isAtTop,         // boolean - true if at top of page
-    isAtBottom       // boolean - true if at bottom of page
+    scrollDirection, 
+    isAtTop,         
+    isAtBottom       
   };
 };
 
