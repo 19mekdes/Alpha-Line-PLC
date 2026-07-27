@@ -515,9 +515,7 @@ const ProjectsPage = () => {
           <button
             onClick={() => setSelectedImage(null)}
             className="absolute top-4 right-4 text-white text-2xl w-10 h-10 rounded-full bg-white/20 hover:bg-white/30"
-          >
-            ✕
-          </button>
+          ></button>
           <button
             onClick={(e) => {
               e.stopPropagation();
