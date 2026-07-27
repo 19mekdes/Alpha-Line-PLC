@@ -1,5 +1,3 @@
-// siteData.js - All content data for Alpha Line Engineering PLC
-
 import { 
   Wifi, 
   Zap, 
